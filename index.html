@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Closet del Gato</title>
+    <title>El Closet del Gato - Tienda Premium en Línea</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Colores principales - Paleta sofisticada */
             --color-primary: #2c1810;
             --color-secondary: #8b6f47;
             --color-accent: #d4a574;
@@ -20,31 +19,20 @@
             --color-gray: #6b7280;
             --color-success: #10b981;
             --color-error: #ef4444;
-            
-            /* Gradientes */
             --gradient-primary: linear-gradient(135deg, #2c1810 0%, #5d3a1a 100%);
             --gradient-accent: linear-gradient(135deg, #d4a574 0%, #b8956a 100%);
-            --gradient-overlay: linear-gradient(180deg, rgba(44, 24, 16, 0.7) 0%, rgba(44, 24, 16, 0.3) 100%);
-            
-            /* Sombras */
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
             --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
             --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.24);
-            
-            /* Transiciones */
             --transition-fast: 0.2s ease;
             --transition-base: 0.3s ease;
             --transition-slow: 0.5s ease;
-            
-            /* Espaciado */
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 1.5rem;
             --spacing-lg: 2rem;
             --spacing-xl: 3rem;
-            
-            /* Bordes */
             --radius-sm: 4px;
             --radius-md: 8px;
             --radius-lg: 12px;
@@ -64,6 +52,7 @@
             background-color: var(--color-light);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: 80px;
         }
 
         .container {
@@ -72,29 +61,31 @@
             padding: 0 var(--spacing-md);
         }
 
-        /* ========================================
-           HEADER
-        ======================================== */
         .header {
             background: var(--gradient-primary);
             color: var(--color-white);
             padding: var(--spacing-md) 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             box-shadow: var(--shadow-lg);
             animation: slideDown 0.5s ease;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header.visible {
+            transform: translateY(0);
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .header-content {
@@ -233,9 +224,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* ========================================
-           HERO SECTION
-        ======================================== */
         .hero {
             position: relative;
             background: var(--gradient-primary);
@@ -273,14 +261,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-title {
@@ -309,9 +291,6 @@
             clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
         }
 
-        /* ========================================
-           BUTTONS
-        ======================================== */
         .btn-primary {
             background: var(--gradient-accent);
             color: var(--color-dark);
@@ -352,9 +331,6 @@
             width: 100%;
         }
 
-        /* ========================================
-           PRODUCTS SECTION
-        ======================================== */
         .products-section {
             padding: var(--spacing-xl) 0;
         }
@@ -454,14 +430,8 @@
         }
 
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .product-card:hover {
@@ -584,7 +554,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* List View Styles */
         .products-grid.list-view .product-card {
             display: flex;
             flex-direction: row;
@@ -607,13 +576,6 @@
             justify-content: space-between;
         }
 
-        .products-grid.list-view .product-description {
-            display: block;
-        }
-
-        /* ========================================
-           CART SIDEBAR
-        ======================================== */
         .cart-sidebar,
         .favorites-sidebar {
             position: fixed;
@@ -680,14 +642,8 @@
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .cart-item-image {
@@ -792,9 +748,6 @@
             opacity: 0.5;
         }
 
-        /* ========================================
-           CONTACT SECTION
-        ======================================== */
         .contact-section {
             padding: var(--spacing-xl) 0;
             background: var(--color-white);
@@ -876,7 +829,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             padding: var(--spacing-md);
             border: 2px solid var(--color-light);
             border-radius: var(--radius-md);
@@ -886,14 +840,12 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--color-accent);
         }
 
-        /* ========================================
-           FOOTER
-        ======================================== */
         .footer {
             background: var(--gradient-primary);
             color: var(--color-white);
@@ -985,9 +937,6 @@
             opacity: 0.8;
         }
 
-        /* ========================================
-           MODAL
-        ======================================== */
         .modal {
             position: fixed;
             top: 0;
@@ -1017,14 +966,8 @@
         }
 
         @keyframes modalSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-header {
@@ -1054,12 +997,6 @@
 
         .checkout-form h4:first-child {
             margin-top: 0;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-md);
         }
 
         .payment-methods {
@@ -1110,9 +1047,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* ========================================
-           OVERLAY
-        ======================================== */
         .overlay {
             position: fixed;
             top: 0;
@@ -1132,9 +1066,6 @@
             visibility: visible;
         }
 
-        /* ========================================
-           TOAST NOTIFICATION
-        ======================================== */
         .toast {
             position: fixed;
             top: 100px;
@@ -1157,14 +1088,10 @@
             border-left-color: var(--color-error);
         }
 
-        /* ========================================
-           RESPONSIVE DESIGN
-        ======================================== */
         @media (max-width: 1024px) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-            
             .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -1174,7 +1101,6 @@
             .header-content {
                 flex-wrap: wrap;
             }
-            
             .nav {
                 order: 3;
                 width: 100%;
@@ -1182,54 +1108,39 @@
                 gap: var(--spacing-md);
                 margin-top: var(--spacing-sm);
             }
-            
             .search-input {
                 width: 180px;
             }
-            
             .search-input:focus {
                 width: 200px;
             }
-            
             .hero-title {
                 font-size: 2.5rem;
             }
-            
             .hero-subtitle {
                 font-size: 1rem;
             }
-            
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
                 gap: var(--spacing-md);
             }
-            
             .products-grid.list-view .product-card {
                 flex-direction: column;
             }
-            
             .products-grid.list-view .product-image-container {
                 width: 100%;
                 padding-top: 100%;
             }
-            
             .controls {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
             .filters {
                 justify-content: center;
             }
-            
             .view-controls {
                 justify-content: center;
             }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -1239,32 +1150,24 @@
             .logo h1 {
                 font-size: 1.5rem;
             }
-            
             .hero {
                 padding: 80px var(--spacing-md);
             }
-            
             .hero-title {
                 font-size: 2rem;
             }
-            
             .section-title {
                 font-size: 2rem;
             }
-            
             .products-grid {
                 grid-template-columns: 1fr;
             }
-            
             .cart-sidebar,
             .favorites-sidebar {
                 max-width: 100%;
             }
         }
 
-        /* ========================================
-           SCROLLBAR
-        ======================================== */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -1282,30 +1185,6 @@
             background: var(--color-primary);
         }
 
-        /* ========================================
-           LOADING ANIMATION
-        ======================================== */
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        .loading {
-            animation: shimmer 2s infinite;
-            background: linear-gradient(
-                to right,
-                var(--color-light) 0%,
-                #e0e0e0 20%,
-                var(--color-light) 40%,
-                var(--color-light) 100%
-            );
-            background-size: 1000px 100%;
-        }
-
         @keyframes pulseBtn {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
@@ -1317,15 +1196,13 @@
     </style>
 </head>
 <body>
-    <!-- Notificación Toast -->
     <div id="toast" class="toast"></div>
 
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1>El Closet Del Gato</h1>
+                    <h1>El Closet del Gato</h1>
                     <span class="tagline">Premium Collection</span>
                 </div>
                 
@@ -1364,7 +1241,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">
             <h2 class="hero-title">Colección Exclusiva 2026</h2>
@@ -1376,7 +1252,6 @@
         <div class="hero-decoration"></div>
     </section>
 
-    <!-- Filters and View Controls -->
     <section class="products-section" id="productos">
         <div class="container">
             <div class="section-header">
@@ -1384,10 +1259,10 @@
                 <div class="controls">
                     <div class="filters">
                         <button class="filter-btn active" data-category="todos">Todos</button>
-                        <button class="filter-btn" data-category="tecnologia">Joyeria</button>
+                        <button class="filter-btn" data-category="tecnologia">Tecnología</button>
                         <button class="filter-btn" data-category="moda">Moda</button>
                         <button class="filter-btn" data-category="hogar">Hogar</button>
-                        <button class="filter-btn" data-category="deportes">Calsado</button>
+                        <button class="filter-btn" data-category="deportes">Deportes</button>
                     </div>
                     
                     <div class="view-controls">
@@ -1413,13 +1288,10 @@
                 </div>
             </div>
 
-            <div class="products-grid" id="productsGrid">
-                <!-- Los productos se cargarán dinámicamente con JavaScript -->
-            </div>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
     </section>
 
-    <!-- Contacto Section -->
     <section class="contact-section" id="contacto">
         <div class="container">
             <h2 class="section-title">Contáctanos</h2>
@@ -1427,33 +1299,11 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <div>
-                            <h3>Dirección</h3>
-                            <p>Av. Principal 123, Ciudad Sahagún, Hidalgo, México</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
                         <div>
-                            <h3>Teléfono</h3>
-                            <p>+52 (779) 123-4567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <div>
-                            <h3>Email</h3>
-                            <p>contacto@elclosetdelgato.com</p>
+                            <h3>Teléfono / WhatsApp</h3>
+                            <p>+52 (729) 756-3604</p>
                         </div>
                     </div>
 
@@ -1483,9 +1333,6 @@
                         <input type="text" id="nombre" placeholder="Nombre completo" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Correo electrónico" required>
-                    </div>
-                    <div class="form-group">
                         <textarea id="mensaje" rows="5" placeholder="Mensaje" required></textarea>
                     </div>
                     <button type="submit" class="btn-primary">Enviar Mensaje</button>
@@ -1494,12 +1341,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>El Closet Del Gato</h3>
+                    <h3>El Closet del Gato</h3>
                     <p>Tu destino para productos premium y experiencias de compra excepcionales.</p>
                 </div>
                 
@@ -1527,19 +1373,18 @@
                     <h4>Newsletter</h4>
                     <p>Suscríbete para recibir ofertas exclusivas</p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="Tu email">
-                        <button>Suscribir</button>
+                        <input type="tel" id="newsletterPhone" placeholder="Tu teléfono" pattern="[0-9]{10}">
+                        <button onclick="suscribirNewsletter(event)">Suscribir</button>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 El Closet Del Gato. Todos los derechos reservados.</p>
+                <p>&copy; 2026 El Closet del Gato. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3>Carrito de Compras</h3>
@@ -1551,9 +1396,7 @@
             </button>
         </div>
         
-        <div class="cart-items" id="cartItems">
-            <!-- Los items del carrito se cargarán dinámicamente -->
-        </div>
+        <div class="cart-items" id="cartItems"></div>
         
         <div class="cart-footer">
             <div class="cart-total">
@@ -1565,7 +1408,6 @@
         </div>
     </div>
 
-    <!-- Favorites Sidebar -->
     <div class="favorites-sidebar" id="favoritesSidebar">
         <div class="cart-header">
             <h3>Mis Favoritos</h3>
@@ -1577,12 +1419,9 @@
             </button>
         </div>
         
-        <div class="favorites-items" id="favoritesItems">
-            <!-- Los favoritos se cargarán dinámicamente -->
-        </div>
+        <div class="favorites-items" id="favoritesItems"></div>
     </div>
 
-    <!-- Checkout Modal -->
     <div class="modal" id="checkoutModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1597,105 +1436,94 @@
             
             <form class="checkout-form" id="checkoutForm">
                 <h4>Información de Envío</h4>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Nombre Completo *</label>
-                        <input type="text" id="checkoutName" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Teléfono *</label>
-                        <input type="tel" id="checkoutPhone" required>
-                    </div>
+                
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" id="checkoutName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono *</label>
+                    <input type="tel" id="checkoutPhone" required placeholder="Ej: 7791234567">
                 </div>
                 
                 <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" id="checkoutEmail" required>
+                    <label>Dirección</label>
+                    <input type="text" id="checkoutAddress" placeholder="Calle, número, colonia (opcional)">
                 </div>
-                
+
                 <div class="form-group">
-                    <label>Dirección *</label>
-                    <input type="text" id="checkoutAddress" required>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Ciudad *</label>
-                        <input type="text" id="checkoutCity" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Código Postal *</label>
-                        <input type="text" id="checkoutZip" required>
-                    </div>
+                    <label>Ciudad *</label>
+                    <select id="checkoutCity" required>
+                        <option value="">Selecciona una ciudad</option>
+                        <option value="Apan">Apan</option>
+                        <option value="Sahagún">Sahagún</option>
+                    </select>
                 </div>
 
                 <h4>Método de Pago</h4>
                 <div class="payment-methods">
                     <label class="payment-option">
-                        <input type="radio" name="payment" value="tarjeta" checked>
-                        <span>Tarjeta de Crédito/Débito</span>
-                    </label>
-                    <label class="payment-option">
-                        <input type="radio" name="payment" value="paypal">
-                        <span>PayPal</span>
-                    </label>
-                    <label class="payment-option">
-                        <input type="radio" name="payment" value="transferencia">
+                        <input type="radio" name="payment" value="Transferencia" checked>
                         <span>Transferencia Bancaria</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Efectivo">
+                        <span>Pago en Efectivo (Contra entrega)</span>
                     </label>
                 </div>
 
                 <div class="checkout-summary">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span id="checkoutSubtotal">$0.00</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Envío:</span>
-                        <span>$150.00</span>
-                    </div>
                     <div class="summary-row total">
-                        <span>Total:</span>
+                        <span>Total a Pagar:</span>
                         <span id="checkoutTotal">$0.00</span>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-primary btn-full">Confirmar Pedido</button>
+                <button type="submit" class="btn-primary btn-full">Confirmar Pedido por WhatsApp</button>
             </form>
         </div>
     </div>
 
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ========================================
-        // DATOS DE PRODUCTOS
+        // CONFIGURACIÓN DE WHATSAPP
+        // ========================================
+        // IMPORTANTE: Cambia este número por tu número de WhatsApp
+        // Formato para México: 52 + 1 + código de área (10 dígitos)
+        // Ejemplo: 5217791234567 (52 = México, 1 = prefijo, 7791234567 = 10 dígitos)
+        // Si tu número es 729-756-3604, debes escribir: 5217297563604
+        const WHATSAPP_NUMBER = '5217297563604'; // <--- CAMBIA ESTE NÚMERO
+
+        // ========================================
+        // DATOS DE PRODUCTOS (CON IMÁGENES LOCALES)
         // ========================================
         const productos = [
             {
                 id: 1,
-                nombre: "Smartphone Pro Max",
-                descripcion: "Último modelo con cámara de 108MP y 5G",
+                nombre: "Vestido Gris",
+                descripcion: "Última moda en retacados",
                 precio: 12999,
                 categoria: "tecnologia",
-                imagen: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop"
+                imagen: "images/1.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
                 id: 2,
-                nombre: "Laptop Ultra Premium",
-                descripcion: "16GB RAM, 512GB SSD, procesador i7",
+                nombre: "Vestido Verde",
+                descripcion: "para presumir piernuky",
                 precio: 24999,
                 categoria: "tecnologia",
-                imagen: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop"
+                imagen: "images/2.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
                 id: 3,
-                nombre: "Auriculares Inalámbricos",
-                descripcion: "Cancelación de ruido activa, 30h batería",
+                nombre: "Vestido Rosa",
+                descripcion: "Vestido para presumir chamorro",
                 precio: 3499,
                 categoria: "tecnologia",
-                imagen: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop"
+                imagen: "images/3.jpg"
             },
             {
                 id: 4,
@@ -1703,7 +1531,7 @@
                 descripcion: "Cuero genuino italiano, diseño exclusivo",
                 precio: 5999,
                 categoria: "moda",
-                imagen: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=500&fit=crop"
+                imagen: "images/producto4.jpg"
             },
             {
                 id: 5,
@@ -1711,7 +1539,7 @@
                 descripcion: "Monitor de salud 24/7, GPS integrado",
                 precio: 4799,
                 categoria: "tecnologia",
-                imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop"
+                imagen: "images/producto5.jpg"
             },
             {
                 id: 6,
@@ -1719,7 +1547,7 @@
                 descripcion: "Tecnología de amortiguación avanzada",
                 precio: 2899,
                 categoria: "deportes",
-                imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop"
+                imagen: "images/producto6.jpg"
             },
             {
                 id: 7,
@@ -1727,7 +1555,7 @@
                 descripcion: "Piel de alta calidad, edición limitada",
                 precio: 8999,
                 categoria: "moda",
-                imagen: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=500&fit=crop"
+                imagen: "images/producto7.jpg"
             },
             {
                 id: 8,
@@ -1735,7 +1563,7 @@
                 descripcion: "Espresso profesional en casa",
                 precio: 6499,
                 categoria: "hogar",
-                imagen: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=500&h=500&fit=crop"
+                imagen: "images/producto8.jpg"
             },
             {
                 id: 9,
@@ -1743,7 +1571,7 @@
                 descripcion: "Iluminación LED inteligente, control por app",
                 precio: 1999,
                 categoria: "hogar",
-                imagen: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&h=500&fit=crop"
+                imagen: "images/producto9.jpg"
             },
             {
                 id: 10,
@@ -1751,7 +1579,7 @@
                 descripcion: "Protección UV400, montura titanio",
                 precio: 3299,
                 categoria: "moda",
-                imagen: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&h=500&fit=crop"
+                imagen: "images/producto10.jpg"
             },
             {
                 id: 11,
@@ -1759,7 +1587,7 @@
                 descripcion: "Fibra de carbono, 27 velocidades",
                 precio: 15999,
                 categoria: "deportes",
-                imagen: "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=500&h=500&fit=crop"
+                imagen: "images/producto11.jpg"
             },
             {
                 id: 12,
@@ -1767,7 +1595,7 @@
                 descripcion: "Antiadherente de cerámica, 5 piezas",
                 precio: 2499,
                 categoria: "hogar",
-                imagen: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=500&h=500&fit=crop"
+                imagen: "images/producto12.jpg"
             },
             {
                 id: 13,
@@ -1775,7 +1603,7 @@
                 descripcion: "Sensor full-frame, 4K video",
                 precio: 34999,
                 categoria: "tecnologia",
-                imagen: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&h=500&fit=crop"
+                imagen: "images/producto13.jpg"
             },
             {
                 id: 14,
@@ -1783,7 +1611,7 @@
                 descripcion: "Fragancia exclusiva, 100ml",
                 precio: 4599,
                 categoria: "moda",
-                imagen: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&h=500&fit=crop"
+                imagen: "images/producto14.jpg"
             },
             {
                 id: 15,
@@ -1791,22 +1619,16 @@
                 descripcion: "Resistente al agua, compartimento laptop",
                 precio: 1899,
                 categoria: "deportes",
-                imagen: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop"
+                imagen: "images/producto15.jpg"
             }
         ];
 
-        // ========================================
-        // ESTADO DE LA APLICACIÓN
-        // ========================================
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
         let categoriaActual = 'todos';
         let vistaActual = 'grid';
         let busqueda = '';
 
-        // ========================================
-        // ELEMENTOS DEL DOM
-        // ========================================
         const productsGrid = document.getElementById('productsGrid');
         const cartBtn = document.getElementById('cartBtn');
         const cartSidebar = document.getElementById('cartSidebar');
@@ -1829,9 +1651,6 @@
         const favoritesBadge = document.getElementById('favoritesBadge');
         const contactForm = document.getElementById('contactForm');
 
-        // ========================================
-        // INICIALIZACIÓN
-        // ========================================
         document.addEventListener('DOMContentLoaded', () => {
             renderizarProductos();
             actualizarCarrito();
@@ -1840,9 +1659,6 @@
             actualizarBadges();
         });
 
-        // ========================================
-        // FUNCIONES DE RENDERIZADO
-        // ========================================
         function renderizarProductos() {
             let productosFiltrados = productos.filter(producto => {
                 const coincideCategoria = categoriaActual === 'todos' || producto.categoria === categoriaActual;
@@ -1873,7 +1689,7 @@
                 return `
                     <div class="product-card" data-product-id="${producto.id}">
                         <div class="product-image-container">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" onerror="this.src='https://via.placeholder.com/800x800/f8f6f3/2c1810?text=${encodeURIComponent(producto.nombre)}'">
                             <button class="favorite-btn ${esFavorito ? 'active' : ''}" onclick="toggleFavorito(${producto.id})">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="${esFavorito ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -1913,7 +1729,7 @@
             } else {
                 cartItems.innerHTML = carrito.map(item => `
                     <div class="cart-item">
-                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80/f8f6f3/2c1810?text=Img'">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.nombre}</div>
                             <div class="cart-item-price">$${item.precio.toLocaleString('es-MX')}</div>
@@ -1949,7 +1765,7 @@
             } else {
                 favoritesItems.innerHTML = favoritos.map(item => `
                     <div class="cart-item">
-                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80/f8f6f3/2c1810?text=Img'">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.nombre}</div>
                             <div class="cart-item-price">$${item.precio.toLocaleString('es-MX')}</div>
@@ -1968,9 +1784,6 @@
             guardarEnLocalStorage();
         }
 
-        // ========================================
-        // FUNCIONES DEL CARRITO
-        // ========================================
         function agregarAlCarrito(id) {
             const producto = productos.find(p => p.id === id);
             const itemExistente = carrito.find(item => item.id === id);
@@ -1987,7 +1800,6 @@
             actualizarCarrito();
             mostrarToast(`${producto.nombre} agregado al carrito`, 'success');
             
-            // Animación del botón del carrito
             cartBtn.classList.add('pulse');
             setTimeout(() => cartBtn.classList.remove('pulse'), 300);
         }
@@ -2023,9 +1835,6 @@
             }
         }
 
-        // ========================================
-        // FUNCIONES DE FAVORITOS
-        // ========================================
         function toggleFavorito(id) {
             const producto = productos.find(p => p.id === id);
             const esFavorito = favoritos.some(fav => fav.id === id);
@@ -2042,14 +1851,10 @@
             renderizarProductos();
         }
 
-        // ========================================
-        // FUNCIONES DE FILTRADO Y BÚSQUEDA
-        // ========================================
         function filtrarPorCategoria(categoria) {
             categoriaActual = categoria;
             renderizarProductos();
             
-            // Actualizar botones activos
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.category === categoria) {
@@ -2062,7 +1867,6 @@
             vistaActual = vista;
             renderizarProductos();
             
-            // Actualizar botones activos
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.view === vista) {
@@ -2076,13 +1880,9 @@
             renderizarProductos();
         }
 
-        // ========================================
-        // FUNCIONES DE UI
-        // ========================================
         function toggleSidebar(sidebar) {
             const isActive = sidebar.classList.contains('active');
             
-            // Cerrar todas las barras laterales
             document.querySelectorAll('.cart-sidebar, .favorites-sidebar').forEach(s => {
                 s.classList.remove('active');
             });
@@ -2135,9 +1935,6 @@
             localStorage.setItem('favoritos', JSON.stringify(favoritos));
         }
 
-        // ========================================
-        // CHECKOUT
-        // ========================================
         function procesarCheckout(e) {
             e.preventDefault();
             
@@ -2146,69 +1943,130 @@
                 return;
             }
             
-            // Actualizar totales en el modal
-            const subtotal = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-            const envio = 150;
-            const total = subtotal + envio;
-            
-            document.getElementById('checkoutSubtotal').textContent = `$${subtotal.toLocaleString('es-MX')}`;
+            const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
             document.getElementById('checkoutTotal').textContent = `$${total.toLocaleString('es-MX')}`;
             
             cerrarSidebars();
             toggleModal(checkoutModal);
         }
 
-        function confirmarPedido(e) {
+        function enviarPedidoWhatsApp(e) {
             e.preventDefault();
             
-            // Simular procesamiento del pedido
-            mostrarToast('Procesando pedido...', 'success');
+            // Obtener datos del formulario
+            const nombre = document.getElementById('checkoutName').value;
+            const telefono = document.getElementById('checkoutPhone').value;
+            const direccion = document.getElementById('checkoutAddress').value;
+            const ciudad = document.getElementById('checkoutCity').value;
+            const metodoPago = document.querySelector('input[name="payment"]:checked').value;
             
+            // Calcular total
+            const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+            
+            // Crear lista de productos
+            let listaProductos = '';
+            carrito.forEach(item => {
+                listaProductos += `\n• ${item.nombre}\n  Cantidad: ${item.cantidad}\n  Precio: $${item.precio.toLocaleString('es-MX')}\n  Subtotal: $${(item.precio * item.cantidad).toLocaleString('es-MX')}\n`;
+            });
+            
+            // Crear mensaje para WhatsApp (dirección opcional)
+            const lineaDireccion = direccion ? `📍 *Dirección:* ${direccion}, ${ciudad}\n` : `📍 *Ciudad:* ${ciudad}\n`;
+            
+            const mensaje = `🛍️ *NUEVO PEDIDO - El Closet del Gato*\n\n` +
+                          `👤 *Cliente:* ${nombre}\n` +
+                          `📱 *Teléfono:* ${telefono}\n` +
+                          lineaDireccion +
+                          `💳 *Método de Pago:* ${metodoPago}\n\n` +
+                          `📦 *PRODUCTOS:*${listaProductos}\n` +
+                          `💰 *TOTAL: $${total.toLocaleString('es-MX')}*`;
+            
+            // Codificar mensaje para URL
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            
+            // Crear URL de WhatsApp
+            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
+            
+            // Abrir WhatsApp en nueva ventana
+            window.open(urlWhatsApp, '_blank');
+            
+            // Mostrar confirmación
+            mostrarToast('Redirigiendo a WhatsApp...', 'success');
+            
+            // Cerrar modal y limpiar carrito
             setTimeout(() => {
-                const nombre = document.getElementById('checkoutName').value;
-                mostrarToast(`¡Gracias ${nombre}! Tu pedido ha sido confirmado`, 'success');
-                
-                // Limpiar carrito
+                toggleModal(checkoutModal);
                 carrito = [];
                 actualizarCarrito();
-                
-                // Cerrar modal y resetear formulario
-                toggleModal(checkoutModal);
                 e.target.reset();
             }, 1500);
         }
 
-        // ========================================
-        // FORMULARIO DE CONTACTO
-        // ========================================
         function enviarContacto(e) {
             e.preventDefault();
             
             const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
             const mensaje = document.getElementById('mensaje').value;
             
-            mostrarToast('Enviando mensaje...', 'success');
+            // Crear mensaje para WhatsApp
+            const mensajeWhatsApp = `📧 *MENSAJE DE CONTACTO - El Closet del Gato*\n\n` +
+                                   `👤 *Nombre:* ${nombre}\n\n` +
+                                   `💬 *Mensaje:*\n${mensaje}`;
+            
+            // Codificar mensaje para URL
+            const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
+            
+            // Crear URL de WhatsApp
+            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
+            
+            // Abrir WhatsApp en nueva ventana
+            window.open(urlWhatsApp, '_blank');
+            
+            mostrarToast('Redirigiendo a WhatsApp...', 'success');
             
             setTimeout(() => {
-                mostrarToast(`¡Gracias ${nombre}! Te contactaremos pronto`, 'success');
                 e.target.reset();
             }, 1000);
         }
 
-        // ========================================
-        // NAVEGACIÓN SUAVE
-        // ========================================
+        function suscribirNewsletter(e) {
+            e.preventDefault();
+            
+            const telefono = document.getElementById('newsletterPhone').value;
+            
+            if (!telefono || telefono.length < 10) {
+                mostrarToast('Por favor ingresa un número de teléfono válido', 'error');
+                return;
+            }
+            
+            // Crear mensaje para WhatsApp
+            const mensajeWhatsApp = `📬 *SUSCRIPCIÓN NEWSLETTER - El Closet del Gato*\n\n` +
+                                   `📱 *Teléfono:* ${telefono}\n\n` +
+                                   `Quiero suscribirme para recibir ofertas exclusivas y novedades.`;
+            
+            // Codificar mensaje para URL
+            const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
+            
+            // Crear URL de WhatsApp
+            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
+            
+            // Abrir WhatsApp en nueva ventana
+            window.open(urlWhatsApp, '_blank');
+            
+            mostrarToast('Redirigiendo a WhatsApp...', 'success');
+            
+            setTimeout(() => {
+                document.getElementById('newsletterPhone').value = '';
+            }, 1000);
+        }
+
         function inicializarNavegacion() {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     
-                    // Actualizar activo
                     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
                     
-                    // Scroll suave
                     const section = link.getAttribute('data-section');
                     const element = document.getElementById(section);
                     
@@ -2219,20 +2077,14 @@
             });
         }
 
-        // ========================================
-        // EVENT LISTENERS
-        // ========================================
         function inicializarEventos() {
-            // Carrito
             cartBtn.addEventListener('click', () => toggleSidebar(cartSidebar));
             closeCart.addEventListener('click', cerrarSidebars);
             clearCartBtn.addEventListener('click', vaciarCarrito);
             
-            // Favoritos
             favoritesBtn.addEventListener('click', () => toggleSidebar(favoritesSidebar));
             closeFavorites.addEventListener('click', cerrarSidebars);
             
-            // Overlay
             overlay.addEventListener('click', () => {
                 cerrarSidebars();
                 if (checkoutModal.classList.contains('active')) {
@@ -2240,31 +2092,24 @@
                 }
             });
             
-            // Búsqueda
             searchInput.addEventListener('input', (e) => buscarProductos(e.target.value));
             
-            // Filtros
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => filtrarPorCategoria(btn.dataset.category));
             });
             
-            // Vista
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.addEventListener('click', () => cambiarVista(btn.dataset.view));
             });
             
-            // Checkout
             checkoutBtn.addEventListener('click', procesarCheckout);
             closeCheckout.addEventListener('click', () => toggleModal(checkoutModal));
-            checkoutForm.addEventListener('submit', confirmarPedido);
+            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);
             
-            // Contacto
             contactForm.addEventListener('submit', enviarContacto);
             
-            // Navegación
             inicializarNavegacion();
             
-            // Cerrar con tecla ESC
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     cerrarSidebars();
@@ -2276,17 +2121,34 @@
         }
 
         // ========================================
-        // ANIMACIÓN DE SCROLL
+        // HEADER RETRÁCTIL Y SCROLL
         // ========================================
+        let lastScrollTop = 0;
+
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (window.scrollY > 50) {
+            // Actualizar sombra del header
+            if (currentScroll > 50) {
                 header.style.boxShadow = 'var(--shadow-xl)';
             } else {
                 header.style.boxShadow = 'var(--shadow-lg)';
             }
+            
+            // Comportamiento retráctil del header
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                // Scrolling hacia abajo - ocultar header
+                header.classList.add('hidden');
+                header.classList.remove('visible');
+            } else {
+                // Scrolling hacia arriba - mostrar header
+                header.classList.remove('hidden');
+                header.classList.add('visible');
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
     </script>
 </body>
-</html>
+</html>    
