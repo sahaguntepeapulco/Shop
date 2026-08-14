@@ -1,0 +1,10 @@
+{
+  "name": "el-closet-del-gato",
+  "version": "2.1.0",
+  "private": true,
+  "description": "El Closet del Gato - Tienda en línea con notificaciones push",
+  "dependencies": {
+    "web-push": "^3.6.7",
+    "@netlify/blobs": "^8.1.0"
+  }
+}

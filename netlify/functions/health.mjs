@@ -1,0 +1,1 @@
+export default async()=>new Response(JSON.stringify({ok:true,service:'el-closet-del-gato'}),{headers:{'content-type':'application/json'}});

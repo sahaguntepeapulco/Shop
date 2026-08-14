@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Enviar Notificación — El Closet del Gato</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#2c1810;--accent:#d4a574;--light:#f8f6f3;--gray:#6b7280;--error:#ef4444;--success:#10b981}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--primary);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .card{background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.16);max-width:480px;width:100%;padding:32px}
+  h1{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:4px}
+  .sub{color:var(--gray);font-size:.85rem;margin-bottom:24px}
+  label{display:block;font-weight:600;font-size:.85rem;margin:16px 0 6px}
+  input,textarea,select{width:100%;padding:12px;border:2px solid var(--light);border-radius:8px;font-family:inherit;font-size:.95rem;background:var(--light)}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);background:#fff}
+  textarea{resize:vertical;min-height:70px}
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .preset-btn{background:var(--light);border:1px solid #e5ddd3;border-radius:999px;padding:6px 12px;font-size:.78rem;cursor:pointer;color:var(--primary)}
+  .preset-btn:hover{background:var(--accent);border-color:var(--accent)}
+  button.send{width:100%;margin-top:24px;background:linear-gradient(135deg,#d4a574,#b8956a);color:#2c1810;border:none;padding:14px;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer}
+  button.send:disabled{opacity:.6;cursor:not-allowed}
+  .msg{margin-top:16px;padding:12px;border-radius:8px;font-size:.88rem;display:none}
+  .msg.ok{display:block;background:#ecfdf5;color:var(--success);border:1px solid #a7f3d0}
+  .msg.err{display:block;background:#fef2f2;color:var(--error);border:1px solid #fecaca}
+  .lock-note{font-size:.78rem;color:var(--gray);margin-top:6px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>🐱 Enviar Notificación</h1>
+    <p class="sub">Se enviará a todos los clientes que hayan activado las notificaciones en la tienda.</p>
+
+    <label for="secret">Clave de administrador</label>
+    <input type="password" id="secret" placeholder="Tu clave secreta" autocomplete="off">
+    <p class="lock-note">Se guarda solo en este navegador para no pedírtela cada vez.</p>
+
+    <label for="title">Título</label>
+    <input type="text" id="title" placeholder="Ej: ¡Nueva oferta! 🐱" maxlength="60">
+    <div class="presets">
+      <button type="button" class="preset-btn" data-title="¡Nuevo producto! 🐱" data-body="Acaba de llegar algo que te va a encantar.">Nuevo producto</button>
+      <button type="button" class="preset-btn" data-title="¡Oferta especial! 🏷️" data-body="Por tiempo limitado. Entra y revisa los precios.">Oferta</button>
+      <button type="button" class="preset-btn" data-title="Últimas piezas ⏰" data-body="Se están agotando algunos productos. No te quedes sin el tuyo.">Poco stock</button>
+    </div>
+
+    <label for="body">Mensaje</label>
+    <textarea id="body" placeholder="Ej: Llegaron vestidos nuevos esta semana, 20% de descuento" maxlength="140"></textarea>
+
+    <label for="url">Enlace al presionar (opcional)</label>
+    <input type="text" id="url" placeholder="/#productos" value="/#productos">
+
+    <button class="send" id="sendBtn">Enviar a todos los suscritos</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+<script>
+const $ = id => document.getElementById(id);
+const secretInput = $('secret');
+secretInput.value = localStorage.getItem('admin_notify_secret') || '';
+
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $('title').value = btn.dataset.title;
+    $('body').value = btn.dataset.body;
+  });
+});
+
+$('sendBtn').addEventListener('click', async () => {
+  const secret = secretInput.value.trim();
+  const title = $('title').value.trim();
+  const body = $('body').value.trim();
+  const url = $('url').value.trim() || '/';
+  const msg = $('msg');
+  msg.className = 'msg';
+
+  if (!secret) { msg.textContent = 'Ingresa tu clave de administrador.'; msg.className = 'msg err'; return; }
+  if (!title || !body) { msg.textContent = 'Completa el título y el mensaje.'; msg.className = 'msg err'; return; }
+
+  localStorage.setItem('admin_notify_secret', secret);
+  $('sendBtn').disabled = true;
+  $('sendBtn').textContent = 'Enviando...';
+
+  try {
+    const res = await fetch('/.netlify/functions/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+      body: JSON.stringify({ title, body, url })
+    });
+    const data = await res.json();
+    if (res.ok && data.ok) {
+      msg.textContent = `Enviado correctamente a ${data.sent} de ${data.total} suscriptores.`;
+      msg.className = 'msg ok';
+    } else {
+      msg.textContent = data.error || 'No se pudo enviar. Revisa tu clave.';
+      msg.className = 'msg err';
+    }
+  } catch (e) {
+    msg.textContent = 'Error de conexión. Intenta de nuevo.';
+    msg.className = 'msg err';
+  } finally {
+    $('sendBtn').disabled = false;
+    $('sendBtn').textContent = 'Enviar a todos los suscritos';
+  }
+});
+</script>
+</body>
+</html>
