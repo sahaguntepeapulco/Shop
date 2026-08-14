@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="El Closet del Gato: productos seleccionados, ofertas y compras sencillas por WhatsApp.">
+<meta name="theme-color" content="#2c1810"><meta name="robots" content="index, follow">
+<meta property="og:type" content="website"><meta property="og:title" content="El Closet del Gato — Tienda en línea"><meta property="og:description" content="Productos seleccionados, ofertas y compra fácil por WhatsApp."><meta property="og:url" content="https://elclosetdelgato.netlify.app/">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     <title>El Closet del Gato - Tienda Premium en Línea</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +56,6 @@
             background-color: var(--color-light);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 80px;
         }
 
         .container {
@@ -65,22 +68,11 @@
             background: var(--gradient-primary);
             color: var(--color-white);
             padding: var(--spacing-md) 0;
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
             z-index: 1000;
             box-shadow: var(--shadow-lg);
             animation: slideDown 0.5s ease;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .header.hidden {
-            transform: translateY(-100%);
-        }
-
-        .header.visible {
-            transform: translateY(0);
         }
 
         @keyframes slideDown {
@@ -207,6 +199,24 @@
             background: rgba(255, 255, 255, 0.2);
             border-color: var(--color-accent);
             transform: translateY(-2px);
+        }
+
+        .notify-btn.subscribed {
+            background: var(--gradient-accent);
+            border-color: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .notify-btn.subscribed::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-success);
+            border: 1.5px solid var(--color-primary);
         }
 
         .badge {
@@ -1193,8 +1203,22 @@
         .pulse {
             animation: pulseBtn 0.3s ease;
         }
-    </style>
-</head>
+    
+/* ===== El Closet del Gato v2 ===== */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#eadfd2}.trust-item{background:#fff;padding:18px;text-align:center}.trust-item strong{display:block;color:var(--color-primary);font-size:.95rem}.trust-item span{font-size:.78rem;color:var(--color-gray)}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.hero-note{margin-top:18px;font-size:.82rem;opacity:.8}.section-kicker{text-align:center;text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--color-secondary);font-weight:700;margin-bottom:6px}
+.product-actions{display:flex;gap:7px;align-items:center}.quick-buy{background:#fff;border:1px solid var(--color-secondary);color:var(--color-primary);padding:8px 9px;border-radius:8px;font-size:.76rem;cursor:pointer}.quick-buy:hover{background:var(--color-light)}
+.product-meta{display:flex;align-items:center;gap:8px;min-height:22px;flex-wrap:wrap}.tag{font-size:.65rem;font-weight:700;padding:4px 7px;border-radius:999px;background:#f1e6d8;color:var(--color-primary)}.tag.offer{background:var(--color-primary);color:#fff}.tag.new{background:var(--color-success);color:#fff}.old-price{text-decoration:line-through;color:#999;font-size:.82rem;margin-right:6px}.stock{font-size:.72rem;color:#0b7a56;font-weight:600}.stock.low{color:#a15b00}
+.toolbar-extra{display:flex;gap:8px;align-items:center}.sort-select{padding:9px 12px;border:2px solid var(--color-light);border-radius:8px;background:#fff;font-family:inherit}.results-count{font-size:.8rem;color:var(--color-gray)}
+.benefits{padding:28px 0;background:#fff}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.benefit-card{border:1px solid #eee3d8;border-radius:14px;padding:22px}.benefit-card strong{display:block;color:var(--color-primary);margin-bottom:4px}.benefit-card p{font-size:.85rem;color:var(--color-gray)}
+.newsletter-box{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:#fff;border:1px solid #eadfd2;border-radius:18px;padding:28px;margin:35px 0}.newsletter-form{display:flex;flex-direction:column;gap:8px}.newsletter-row{display:flex;gap:8px}.newsletter-row input{min-width:0;flex:1}.newsletter-box .consent{font-size:.73rem;color:var(--color-gray);line-height:1.4}.form-success{display:none;padding:12px;border-radius:8px;background:#e9f8f1;color:#126b4d;font-size:.85rem}.form-success.show{display:block}
+.whatsapp-float{position:fixed;right:18px;bottom:18px;z-index:1400;background:#1f9d65;color:#fff;text-decoration:none;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(0,0,0,.22);font-size:25px}.share-row{display:flex;gap:8px;margin-top:12px}.share-btn{border:1px solid #ddd;background:#fff;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.78rem}.share-btn:hover{background:var(--color-light)}
+.modal-wide{max-width:760px}.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px}.product-detail img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:var(--color-light)}.product-detail h2{font-family:'Playfair Display',serif;color:var(--color-primary);font-size:2rem}.detail-price{font-size:1.7rem;font-weight:700;color:var(--color-primary);margin:12px 0}.detail-description{color:var(--color-gray);line-height:1.7}.detail-list{padding-left:18px;margin:16px 0;color:var(--color-gray)}
+.install-banner{display:none;position:fixed;left:14px;right:14px;bottom:86px;z-index:1350;background:#fff;border:1px solid #eadfd2;border-radius:14px;padding:14px;box-shadow:var(--shadow-xl);align-items:center;justify-content:space-between;gap:10px}.install-banner.show{display:flex}.install-banner p{font-size:.78rem}.install-banner button{border:0;border-radius:8px;padding:9px 12px;background:var(--color-primary);color:#fff}
+@media(max-width:768px){.trust-strip{grid-template-columns:repeat(2,1fr)}.benefit-grid,.newsletter-box,.product-detail{grid-template-columns:1fr}.newsletter-row{flex-direction:column}.toolbar-extra{width:100%;justify-content:space-between}.product-actions{flex-direction:column;align-items:stretch}.product-actions button{width:100%}.hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;max-width:330px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"El Closet del Gato","url":"https://elclosetdelgato.netlify.app/","description":"Tienda en línea con productos seleccionados y atención por WhatsApp","email":"contacto@elclosetdelgato.com","telephone":"+52 729 756 3604","currenciesAccepted":"MXN"}</script></head>
 <body>
     <div id="toast" class="toast"></div>
 
@@ -1221,14 +1245,21 @@
                         </svg>
                     </div>
                     
-                    <button class="icon-btn favorites-btn" id="favoritesBtn" title="Favoritos">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button class="icon-btn notify-btn" id="notifyBtn" title="Activar notificaciones" aria-label="Activar notificaciones de ofertas">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" id="notifyIcon">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
+
+                    <button class="icon-btn favorites-btn" id="favoritesBtn" title="Favoritos" aria-label="Ver favoritos">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                         </svg>
                         <span class="badge" id="favoritesBadge">0</span>
                     </button>
 
-                    <button class="icon-btn cart-btn" id="cartBtn">
+                    <button class="icon-btn cart-btn" id="cartBtn" title="Carrito" aria-label="Ver carrito de compras">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
@@ -1245,13 +1276,12 @@
         <div class="hero-content">
             <h2 class="hero-title">Colección Exclusiva 2026</h2>
             <p class="hero-subtitle">Descubre productos premium seleccionados especialmente para ti</p>
-            <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">
-                Explorar Ahora
-            </button>
+            <div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Explorar productos</button><button class="btn-secondary" onclick="mostrarOfertas()">Ver ofertas</button></div><p class="hero-note">Compra fácil · Atención por WhatsApp · Favoritos y carrito guardados en tu dispositivo</p>
         </div>
         <div class="hero-decoration"></div>
     </section>
 
+    <section class="trust-strip" aria-label="Ventajas de compra"><div class="trust-item"><strong>🚚 Envíos</strong><span>Consulta cobertura y tiempos</span></div><div class="trust-item"><strong>💬 WhatsApp</strong><span>Atención directa y rápida</span></div><div class="trust-item"><strong>💳 Pago sencillo</strong><span>Transferencia o contra entrega</span></div><div class="trust-item"><strong>🔒 Compra clara</strong><span>Información antes de confirmar</span></div></section>
     <section class="products-section" id="productos">
         <div class="container">
             <div class="section-header">
@@ -1265,8 +1295,7 @@
                         <button class="filter-btn" data-category="deportes">Deportes</button>
                     </div>
                     
-                    <div class="view-controls">
-                        <button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
+                    <div class="toolbar-extra"><span class="results-count" id="resultsCount"></span><select id="sortSelect" class="sort-select" aria-label="Ordenar productos"><option value="relevancia">Ordenar</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="nombre">Nombre A-Z</option></select></div><div class="view-controls"><button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <rect x="3" y="3" width="7" height="7"></rect>
                                 <rect x="14" y="3" width="7" height="7"></rect>
@@ -1292,18 +1321,42 @@
         </div>
     </section>
 
-    <section class="contact-section" id="contacto">
+    <section class="benefits"><div class="container"><p class="section-kicker">Una compra más sencilla</p><h2 class="section-title" style="margin-bottom:22px">Pensado para ti</h2><div class="benefit-grid"><div class="benefit-card"><strong>🛒 Carrito persistente</strong><p>Tus productos y favoritos se guardan en este dispositivo.</p></div><div class="benefit-card"><strong>📲 Pedido por WhatsApp</strong><p>El pedido se prepara automáticamente con productos, cantidades, total y número.</p></div><div class="benefit-card"><strong>🔔 Promociones</strong><p>Suscríbete voluntariamente para recibir novedades y ofertas.</p></div></div></div></section>
+<section class="container" id="newsletter" aria-label="Newsletter"><div class="newsletter-box"><div><p class="section-kicker" style="text-align:left">Promociones</p><h2 style="font-family:'Playfair Display',serif;color:var(--color-primary);margin-bottom:8px">Recibe ofertas antes que nadie</h2><p style="color:var(--color-gray);font-size:.9rem">Tu suscripción queda registrada en Netlify Forms y después puede conectarse a un servicio de campañas.</p></div><form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm"><input type="hidden" name="form-name" value="newsletter"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nueva suscripción — El Closet del Gato"><div class="newsletter-row"><input type="text" name="name" placeholder="Tu nombre (opcional)" autocomplete="name"><input type="email" name="email" placeholder="Tu correo electrónico" autocomplete="email" required></div><label class="consent"><input type="checkbox" name="consent" value="yes" required> Acepto recibir promociones y novedades. Puedo cancelar cuando quiera.</label><button class="btn-primary" type="submit">Quiero recibir ofertas</button><div class="form-success" id="newsletterSuccess">¡Listo! Tu suscripción fue enviada correctamente.</div></form></div></section>
+<section class="contact-section" id="contacto">
         <div class="container">
             <h2 class="section-title">Contáctanos</h2>
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-item">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <div>
+                            <h3>Dirección</h3>
+                            <p>Av. Principal 123, Ciudad Sahagún, Hidalgo, México</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
                         <div>
-                            <h3>Teléfono / WhatsApp</h3>
-                            <p>+52 (729) 756-3604</p>
+                            <h3>Teléfono</h3>
+                            <p>+52 (779) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contacto@elclosetdelgato.com</p>
                         </div>
                     </div>
 
@@ -1328,12 +1381,15 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="contact"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nuevo mensaje de contacto — El Closet del Gato">
                     <div class="form-group">
-                        <input type="text" id="nombre" placeholder="Nombre completo" required>
+                        <input type="text" id="nombre" name="name" placeholder="Nombre completo" autocomplete="name" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="mensaje" rows="5" placeholder="Mensaje" required></textarea>
+                        <input type="email" id="email" name="email" placeholder="Correo electrónico" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="mensaje" name="message" rows="5" placeholder="Mensaje" required></textarea>
                     </div>
                     <button type="submit" class="btn-primary">Enviar Mensaje</button>
                 </form>
@@ -1372,10 +1428,7 @@
                 <div class="footer-section">
                     <h4>Newsletter</h4>
                     <p>Suscríbete para recibir ofertas exclusivas</p>
-                    <div class="newsletter-form">
-                        <input type="tel" id="newsletterPhone" placeholder="Tu teléfono" pattern="[0-9]{10}">
-                        <button onclick="suscribirNewsletter(event)">Suscribir</button>
-                    </div>
+                    <a class="btn-primary" href="#newsletter" style="display:inline-block;text-decoration:none;margin-top:8px">Suscribirme a promociones</a>
                 </div>
             </div>
             
@@ -1422,7 +1475,7 @@
         <div class="favorites-items" id="favoritesItems"></div>
     </div>
 
-    <div class="modal" id="checkoutModal">
+    <div class="modal" id="productDetailModal"><div class="modal-content modal-wide"><div class="modal-header"><h3>Detalle del producto</h3><button class="close-btn" onclick="cerrarProductoDetalle()">×</button></div><div id="productDetailContent"></div></div></div><div class="modal" id="checkoutModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Finalizar Compra</h3>
@@ -1442,14 +1495,11 @@
                     <input type="text" id="checkoutName" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Teléfono *</label>
-                    <input type="tel" id="checkoutPhone" required placeholder="Ej: 7791234567">
-                </div>
+                <div class="form-group"><label>Teléfono *</label><input type="tel" id="checkoutPhone" name="phone" required placeholder="Ej: 7791234567" autocomplete="tel"></div><div class="form-group"><label>Correo electrónico (opcional)</label><input type="email" id="checkoutEmail" name="email" placeholder="Tu correo" autocomplete="email"></div>
                 
                 <div class="form-group">
-                    <label>Dirección</label>
-                    <input type="text" id="checkoutAddress" placeholder="Calle, número, colonia (opcional)">
+                    <label>Dirección *</label>
+                    <input type="text" id="checkoutAddress" required placeholder="Calle, número, colonia">
                 </div>
 
                 <div class="form-group">
@@ -1485,17 +1535,20 @@
         </div>
     </div>
 
-    <div class="overlay" id="overlay"></div>
+    <form name="orders" method="POST" data-netlify="true" hidden><input type="hidden" name="form-name" value="orders"><input name="order_id"><input name="name"><input name="email"><input name="phone"><input name="city"><input name="payment"><input name="total"><textarea name="items"></textarea></form><div class="overlay" id="overlay"></div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <a class="whatsapp-float" href="https://wa.me/527297563604?text=Hola%20El%20Closet%20del%20Gato" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">💬</a><div class="install-banner" id="installBanner"><p><strong>Instala El Closet del Gato</strong><br>Accede más rápido desde tu pantalla de inicio.</p><button id="installBtn">Instalar</button></div>
+    <script>
         // ========================================
         // CONFIGURACIÓN DE WHATSAPP
         // ========================================
         // IMPORTANTE: Cambia este número por tu número de WhatsApp
-        // Formato para México: 52 + 1 + código de área (10 dígitos)
-        // Ejemplo: 5217791234567 (52 = México, 1 = prefijo, 7791234567 = 10 dígitos)
-        // Si tu número es 729-756-3604, debes escribir: 5217297563604
-        const WHATSAPP_NUMBER = '5217297563604'; // <--- CAMBIA ESTE NÚMERO
+        // Formato: código de país + número (sin espacios ni guiones)
+        // Ejemplo: 5217791234567 (52 = México, 779 = código de área, 1234567 = número)
+        const WHATSAPP_NUMBER = '527297563604';
+        const STORE_NAME='El Closet del Gato'; const STORE_URL='https://elclosetdelgato.netlify.app/';
+        // Llave pública VAPID para notificaciones push (esta SÍ va en el código, es pública a propósito)
+        const VAPID_PUBLIC_KEY = 'BJ-JArjXXzITME9rMXTYj-wlD5Qg38xFjxipjhXOgmqZXJDmBMflOY_NAYT-ojZNXKq8-S1QKJnjvKAxbK9cZSM';
 
         // ========================================
         // DATOS DE PRODUCTOS (CON IMÁGENES LOCALES)
@@ -1504,25 +1557,29 @@
             {
                 id: 1,
                 nombre: "Vestido Gris",
-                descripcion: "Última moda en Vestidos",
+                descripcion: "bonito Verstido Gris",
+                destacado: true, // <--- Así se marca un producto como DESTACADO
                 precio: 12999,
-                categoria: "tecnologia",
+                categoria: "Ropa",
                 imagen: "images/1.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
                 id: 2,
                 nombre: "Vestido Verde",
-                descripcion: "Vestido de terciopelo",
+                descripcion: "Bonito Vestido Verde",
                 precio: 24999,
-                categoria: "tecnologia",
+                categoria: "Ropa",
+                nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
                 imagen: "images/2.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
                 id: 3,
                 nombre: "Vestido Rosa",
-                descripcion: "Vestido de noche",
+                descripcion: "Bonito Vestido Rosa",
                 precio: 3499,
-                categoria: "tecnologia",
+                oferta: true, // <--- Así se marca un producto EN OFERTA
+                precioAnterior: 4299, // <--- Precio tachado que se muestra arriba del precio actual
+                categoria: "Ropa",
                 imagen: "images/3.jpg"
             },
             {
@@ -1530,6 +1587,7 @@
                 nombre: "Chaqueta de Cuero Premium",
                 descripcion: "Cuero genuino italiano, diseño exclusivo",
                 precio: 5999,
+                stock: 2, // <--- Número de piezas disponibles (si no lo pones, se asume 5)
                 categoria: "moda",
                 imagen: "images/producto4.jpg"
             },
@@ -1623,7 +1681,7 @@
             }
         ];
 
-        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const productosBase=productos.map((p,i)=>({...p,categoria:(p.categoria.toLowerCase()==='ropa'?'moda':p.categoria.toLowerCase()),stock:p.stock??5,destacado:p.destacado===true,oferta:p.oferta===true,nuevo:p.nuevo===true,precioAnterior:p.oferta===true&&p.precioAnterior?p.precioAnterior:null})); productos.length=0; productos.push(...productosBase); let sortActual='relevancia'; let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
         let categoriaActual = 'todos';
         let vistaActual = 'grid';
@@ -1662,12 +1720,11 @@
         function renderizarProductos() {
             let productosFiltrados = productos.filter(producto => {
                 const coincideCategoria = categoriaActual === 'todos' || producto.categoria === categoriaActual;
-                const coincideBusqueda = producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-                                        producto.descripcion.toLowerCase().includes(busqueda.toLowerCase());
+                const q=normalizarTexto(busqueda); const coincideBusqueda=normalizarTexto(producto.nombre).includes(q)||normalizarTexto(producto.descripcion).includes(q)||normalizarTexto(producto.categoria).includes(q);
                 return coincideCategoria && coincideBusqueda;
             });
 
-            if (productosFiltrados.length === 0) {
+            if(sortActual==='precio-asc')productosFiltrados.sort((a,b)=>a.precio-b.precio);else if(sortActual==='precio-desc')productosFiltrados.sort((a,b)=>b.precio-a.precio);else if(sortActual==='nombre')productosFiltrados.sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));document.getElementById('resultsCount').textContent=`${productosFiltrados.length} producto${productosFiltrados.length===1?'':'s'}`; if (productosFiltrados.length === 0) {
                 productsGrid.innerHTML = `
                     <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--color-gray);">
                         <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom: 20px; opacity: 0.5;">
@@ -1689,24 +1746,14 @@
                 return `
                     <div class="product-card" data-product-id="${producto.id}">
                         <div class="product-image-container">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" onerror="this.src='https://via.placeholder.com/800x800/f8f6f3/2c1810?text=${encodeURIComponent(producto.nombre)}'">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy" width="400" height="400" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 400%27%3E%3Crect width=%27400%27 height=%27400%27 fill=%27%23f8f6f3%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27sans-serif%27 font-size=%2718%27 fill=%27%232c1810%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${encodeURIComponent(producto.nombre)}%3C/text%3E%3C/svg%3E'">
                             <button class="favorite-btn ${esFavorito ? 'active' : ''}" onclick="toggleFavorito(${producto.id})">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="${esFavorito ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                                 </svg>
                             </button>
                         </div>
-                        <div class="product-info">
-                            <div class="product-category">${producto.categoria}</div>
-                            <h3 class="product-name">${producto.nombre}</h3>
-                            <p class="product-description">${producto.descripcion}</p>
-                            <div class="product-footer">
-                                <span class="product-price">$${producto.precio.toLocaleString('es-MX')}</span>
-                                <button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})">
-                                    Agregar
-                                </button>
-                            </div>
-                        </div>
+                        <div class="product-info"><div class="product-meta"><span class="product-category">${producto.categoria}</span>${producto.nuevo?'<span class="tag new">NUEVO</span>':''}${producto.oferta?'<span class="tag offer">OFERTA</span>':''}${producto.destacado?'<span class="tag">DESTACADO</span>':''}</div><h3 class="product-name">${producto.nombre}</h3><p class="product-description">${producto.descripcion}</p><div class="product-meta"><span class="stock ${producto.stock<=3?'low':''}">${producto.stock===0?'Agotado':(producto.stock<=3?`Últimas ${producto.stock} piezas`:'Disponible')}</span></div><div class="product-footer"><span class="product-price">${producto.precioAnterior?`<span class="old-price">$${producto.precioAnterior.toLocaleString('es-MX')}</span>`:''}$${producto.precio.toLocaleString('es-MX')}</span></div><div class="product-actions"><button class="add-to-cart-btn" onclick="agregarAlCarrito(${producto.id})" ${producto.stock===0?'disabled':''}>Agregar</button><button class="quick-buy" onclick="comprarAhora(${producto.id})" ${producto.stock===0?'disabled':''}>Comprar ahora</button><button class="quick-buy" onclick="verProducto(${producto.id})">Detalles</button></div></div>
                     </div>
                 `;
             }).join('');
@@ -1729,7 +1776,7 @@
             } else {
                 cartItems.innerHTML = carrito.map(item => `
                     <div class="cart-item">
-                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80/f8f6f3/2c1810?text=Img'">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image" loading="lazy" width="80" height="80" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 80 80%27%3E%3Crect width=%2780%27 height=%2780%27 fill=%27%23f8f6f3%27/%3E%3C/svg%3E'">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.nombre}</div>
                             <div class="cart-item-price">$${item.precio.toLocaleString('es-MX')}</div>
@@ -1765,7 +1812,7 @@
             } else {
                 favoritesItems.innerHTML = favoritos.map(item => `
                     <div class="cart-item">
-                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80/f8f6f3/2c1810?text=Img'">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="cart-item-image" loading="lazy" width="80" height="80" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 80 80%27%3E%3Crect width=%2780%27 height=%2780%27 fill=%27%23f8f6f3%27/%3E%3C/svg%3E'">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.nombre}</div>
                             <div class="cart-item-price">$${item.precio.toLocaleString('es-MX')}</div>
@@ -1786,10 +1833,9 @@
 
         function agregarAlCarrito(id) {
             const producto = productos.find(p => p.id === id);
-            const itemExistente = carrito.find(item => item.id === id);
+            if(!producto||producto.stock===0){mostrarToast('Este producto está agotado','error');return;} const itemExistente=carrito.find(item=>item.id===id);
 
-            if (itemExistente) {
-                itemExistente.cantidad++;
+            if(itemExistente){if(itemExistente.cantidad>=producto.stock){mostrarToast('No hay más unidades disponibles','error');return;} itemExistente.cantidad++; 
             } else {
                 carrito.push({
                     ...producto,
@@ -1935,6 +1981,8 @@
             localStorage.setItem('favoritos', JSON.stringify(favoritos));
         }
 
+        function normalizarTexto(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}function comprarAhora(id){agregarAlCarrito(id);setTimeout(()=>{if(carrito.length)procesarCheckout(new Event('submit'))},100)}function verProducto(id){const p=productos.find(x=>x.id===id);if(!p)return;document.getElementById('productDetailContent').innerHTML=`<div class="product-detail"><img src="${p.imagen}" alt="${p.nombre}" onerror="this.style.display='none'"><div><div class="product-category">${p.categoria}</div><h2>${p.nombre}</h2><div class="detail-price">${p.precioAnterior?`<span class="old-price">$${p.precioAnterior.toLocaleString('es-MX')}</span>`:''}$${p.precio.toLocaleString('es-MX')}</div><p class="detail-description">${p.descripcion}</p><ul class="detail-list"><li>${p.stock===0?'Agotado':`Disponible · ${p.stock} unidades`}</li><li>Compra sencilla por WhatsApp</li><li>Atención personalizada</li></ul><button class="btn-primary btn-full" onclick="agregarAlCarrito(${p.id});cerrarProductoDetalle()">Agregar al carrito</button><div class="share-row"><button class="share-btn" onclick="compartirProducto(${p.id})">Compartir</button><button class="share-btn" onclick="consultarProducto(${p.id})">WhatsApp</button></div></div></div>`;document.getElementById('productDetailModal').classList.add('active');overlay.classList.add('active')}function cerrarProductoDetalle(){document.getElementById('productDetailModal').classList.remove('active');overlay.classList.remove('active')}async function compartirProducto(id){const p=productos.find(x=>x.id===id),d={title:p.nombre,text:`${p.nombre} — $${p.precio.toLocaleString('es-MX')} en ${STORE_NAME}`,url:STORE_URL+'#productos'};try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(d.text+' '+d.url);mostrarToast('Enlace copiado','success')}}catch(e){}}function consultarProducto(id){const p=productos.find(x=>x.id===id),m=`Hola, me interesa *${p.nombre}* de ${STORE_NAME}. ¿Sigue disponible?`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(m)}`,'_blank','noopener')}function mostrarOfertas(){document.getElementById('productos').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.querySelectorAll('.product-card').forEach(c=>{const p=productos.find(x=>x.id==c.dataset.productId);c.style.display=p?.oferta?'':'none'}),200)}
+
         function procesarCheckout(e) {
             e.preventDefault();
             
@@ -1950,112 +1998,20 @@
             toggleModal(checkoutModal);
         }
 
-        function enviarPedidoWhatsApp(e) {
-            e.preventDefault();
-            
-            // Obtener datos del formulario
-            const nombre = document.getElementById('checkoutName').value;
-            const telefono = document.getElementById('checkoutPhone').value;
-            const direccion = document.getElementById('checkoutAddress').value;
-            const ciudad = document.getElementById('checkoutCity').value;
-            const metodoPago = document.querySelector('input[name="payment"]:checked').value;
-            
-            // Calcular total
-            const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-            
-            // Crear lista de productos
-            let listaProductos = '';
-            carrito.forEach(item => {
-                listaProductos += `\n• ${item.nombre}\n  Cantidad: ${item.cantidad}\n  Precio: $${item.precio.toLocaleString('es-MX')}\n  Subtotal: $${(item.precio * item.cantidad).toLocaleString('es-MX')}\n`;
-            });
-            
-            // Crear mensaje para WhatsApp (dirección opcional)
-            const lineaDireccion = direccion ? `📍 *Dirección:* ${direccion}, ${ciudad}\n` : `📍 *Ciudad:* ${ciudad}\n`;
-            
-            const mensaje = `🛍️ *NUEVO PEDIDO - El Closet del Gato*\n\n` +
-                          `👤 *Cliente:* ${nombre}\n` +
-                          `📱 *Teléfono:* ${telefono}\n` +
-                          lineaDireccion +
-                          `💳 *Método de Pago:* ${metodoPago}\n\n` +
-                          `📦 *PRODUCTOS:*${listaProductos}\n` +
-                          `💰 *TOTAL: $${total.toLocaleString('es-MX')}*`;
-            
-            // Codificar mensaje para URL
-            const mensajeCodificado = encodeURIComponent(mensaje);
-            
-            // Crear URL de WhatsApp
-            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
-            
-            // Abrir WhatsApp en nueva ventana
-            window.open(urlWhatsApp, '_blank');
-            
-            // Mostrar confirmación
-            mostrarToast('Redirigiendo a WhatsApp...', 'success');
-            
-            // Cerrar modal y limpiar carrito
-            setTimeout(() => {
-                toggleModal(checkoutModal);
-                carrito = [];
-                actualizarCarrito();
-                e.target.reset();
-            }, 1500);
-        }
+        async function enviarPedidoWhatsApp(e){e.preventDefault();if(!carrito.length){mostrarToast('El carrito está vacío','error');return;}const nombre=document.getElementById('checkoutName').value.trim(),telefono=document.getElementById('checkoutPhone').value.trim(),direccion=document.getElementById('checkoutAddress').value.trim(),ciudad=document.getElementById('checkoutCity').value,metodoPago=document.querySelector('input[name="payment"]:checked').value,total=carrito.reduce((s,i)=>s+i.precio*i.cantidad,0);const orderId='GATO-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();const lista=carrito.map(i=>`• ${i.nombre} — ${i.cantidad} x $${i.precio.toLocaleString('es-MX')} = $${(i.precio*i.cantidad).toLocaleString('es-MX')}`).join('\n');const mensaje=`🛍️ *PEDIDO ${orderId} — ${STORE_NAME}*\n\n👤 *Cliente:* ${nombre}\n📱 *Teléfono:* ${telefono}\n📍 *Dirección:* ${direccion}, ${ciudad}\n💳 *Pago:* ${metodoPago}\n\n📦 *PRODUCTOS:*\n${lista}\n\n💰 *TOTAL: $${total.toLocaleString('es-MX')}*\n\n¿Me confirman disponibilidad y envío?`;try{const fd=new URLSearchParams();fd.append('form-name','orders');fd.append('order_id',orderId);fd.append('name',nombre);fd.append('email',document.getElementById('checkoutEmail')?.value||'');fd.append('phone',telefono);fd.append('city',ciudad);fd.append('payment',metodoPago);fd.append('total',String(total));fd.append('items',lista);await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,'_blank','noopener');localStorage.setItem('lastOrder',JSON.stringify({orderId,nombre,total,createdAt:new Date().toISOString()}));mostrarToast(`Pedido ${orderId} preparado`,'success');setTimeout(()=>{toggleModal(checkoutModal);carrito=[];actualizarCarrito();e.target.reset()},700);}
 
         function enviarContacto(e) {
             e.preventDefault();
             
             const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
             const mensaje = document.getElementById('mensaje').value;
             
-            // Crear mensaje para WhatsApp
-            const mensajeWhatsApp = `📧 *MENSAJE DE CONTACTO - El Closet del Gato*\n\n` +
-                                   `👤 *Nombre:* ${nombre}\n\n` +
-                                   `💬 *Mensaje:*\n${mensaje}`;
-            
-            // Codificar mensaje para URL
-            const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
-            
-            // Crear URL de WhatsApp
-            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
-            
-            // Abrir WhatsApp en nueva ventana
-            window.open(urlWhatsApp, '_blank');
-            
-            mostrarToast('Redirigiendo a WhatsApp...', 'success');
+            mostrarToast('Enviando mensaje...', 'success');
             
             setTimeout(() => {
+                mostrarToast(`¡Gracias ${nombre}! Te contactaremos pronto`, 'success');
                 e.target.reset();
-            }, 1000);
-        }
-
-        function suscribirNewsletter(e) {
-            e.preventDefault();
-            
-            const telefono = document.getElementById('newsletterPhone').value;
-            
-            if (!telefono || telefono.length < 10) {
-                mostrarToast('Por favor ingresa un número de teléfono válido', 'error');
-                return;
-            }
-            
-            // Crear mensaje para WhatsApp
-            const mensajeWhatsApp = `📬 *SUSCRIPCIÓN NEWSLETTER - El Closet del Gato*\n\n` +
-                                   `📱 *Teléfono:* ${telefono}\n\n` +
-                                   `Quiero suscribirme para recibir ofertas exclusivas y novedades.`;
-            
-            // Codificar mensaje para URL
-            const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
-            
-            // Crear URL de WhatsApp
-            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
-            
-            // Abrir WhatsApp en nueva ventana
-            window.open(urlWhatsApp, '_blank');
-            
-            mostrarToast('Redirigiendo a WhatsApp...', 'success');
-            
-            setTimeout(() => {
-                document.getElementById('newsletterPhone').value = '';
             }, 1000);
         }
 
@@ -2087,9 +2043,7 @@
             
             overlay.addEventListener('click', () => {
                 cerrarSidebars();
-                if (checkoutModal.classList.contains('active')) {
-                    toggleModal(checkoutModal);
-                }
+                if (checkoutModal.classList.contains('active')) toggleModal(checkoutModal); if(document.getElementById('productDetailModal').classList.contains('active')) cerrarProductoDetalle();
             });
             
             searchInput.addEventListener('input', (e) => buscarProductos(e.target.value));
@@ -2104,7 +2058,7 @@
             
             checkoutBtn.addEventListener('click', procesarCheckout);
             closeCheckout.addEventListener('click', () => toggleModal(checkoutModal));
-            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);
+            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);const sortSelect=document.getElementById('sortSelect');sortSelect.addEventListener('change',e=>{sortActual=e.target.value;renderizarProductos()});const newsletterForm=document.getElementById('newsletterForm');newsletterForm.addEventListener('submit',async e=>{e.preventDefault();try{const fd=new URLSearchParams(new FormData(newsletterForm));await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()});newsletterForm.reset();document.getElementById('newsletterSuccess').classList.add('show');mostrarToast('¡Suscripción enviada!','success')}catch(err){mostrarToast('No se pudo enviar. Intenta de nuevo.','error')}});
             
             contactForm.addEventListener('submit', enviarContacto);
             
@@ -2113,42 +2067,110 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     cerrarSidebars();
-                    if (checkoutModal.classList.contains('active')) {
-                        toggleModal(checkoutModal);
-                    }
+                    if (checkoutModal.classList.contains('active')) toggleModal(checkoutModal); if(document.getElementById('productDetailModal').classList.contains('active')) cerrarProductoDetalle();
                 }
             });
         }
 
         // ========================================
-        // HEADER RETRÁCTIL Y SCROLL
+        // NOTIFICACIONES PUSH
         // ========================================
-        let lastScrollTop = 0;
+        function urlBase64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+            const rawData = atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; i++) outputArray[i] = rawData.charCodeAt(i);
+            return outputArray;
+        }
+
+        const notifyBtn = document.getElementById('notifyBtn');
+        const notifySupported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+
+        function setNotifyBtnState(subscribed) {
+            if (!notifyBtn) return;
+            notifyBtn.classList.toggle('subscribed', subscribed);
+            notifyBtn.title = subscribed ? 'Notificaciones activadas (click para desactivar)' : 'Activar notificaciones';
+            notifyBtn.setAttribute('aria-label', notifyBtn.title);
+        }
+
+        async function refreshNotifyState() {
+            if (!notifySupported) { if (notifyBtn) notifyBtn.style.display = 'none'; return; }
+            try {
+                const reg = await navigator.serviceWorker.ready;
+                const sub = await reg.pushManager.getSubscription();
+                setNotifyBtnState(!!sub);
+            } catch (e) { /* silencioso */ }
+        }
+
+        async function toggleNotifications() {
+            if (!notifySupported) {
+                mostrarToast('Tu navegador no soporta notificaciones', 'error');
+                return;
+            }
+            try {
+                const reg = await navigator.serviceWorker.ready;
+                const existing = await reg.pushManager.getSubscription();
+
+                if (existing) {
+                    // Desactivar
+                    await fetch('/.netlify/functions/subscribe', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'unsubscribe', endpoint: existing.endpoint })
+                    }).catch(() => {});
+                    await existing.unsubscribe();
+                    setNotifyBtnState(false);
+                    mostrarToast('Notificaciones desactivadas', 'success');
+                    return;
+                }
+
+                const permission = await Notification.requestPermission();
+                if (permission !== 'granted') {
+                    mostrarToast('Necesitas permitir las notificaciones en tu navegador', 'error');
+                    return;
+                }
+
+                const sub = await reg.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+                });
+
+                await fetch('/.netlify/functions/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(sub.toJSON())
+                });
+
+                setNotifyBtnState(true);
+                mostrarToast('¡Notificaciones activadas! 🔔', 'success');
+            } catch (err) {
+                console.warn(err);
+                mostrarToast('No se pudieron activar las notificaciones', 'error');
+            }
+        }
+
+        if (notifyBtn) notifyBtn.addEventListener('click', toggleNotifications);
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(() => refreshNotifyState()).catch(() => {});
+            });
+        } else if (notifyBtn) {
+            notifyBtn.style.display = 'none';
+        }
+
+        let deferredInstallPrompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;document.getElementById('installBanner').classList.add('show')});document.getElementById('installBtn').addEventListener('click',async()=>{if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;document.getElementById('installBanner').classList.remove('show')});
 
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Actualizar sombra del header
-            if (currentScroll > 50) {
+            if (window.scrollY > 50) {
                 header.style.boxShadow = 'var(--shadow-xl)';
             } else {
                 header.style.boxShadow = 'var(--shadow-lg)';
             }
-            
-            // Comportamiento retráctil del header
-            if (currentScroll > lastScrollTop && currentScroll > 100) {
-                // Scrolling hacia abajo - ocultar header
-                header.classList.add('hidden');
-                header.classList.remove('visible');
-            } else {
-                // Scrolling hacia arriba - mostrar header
-                header.classList.remove('hidden');
-                header.classList.add('visible');
-            }
-            
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
     </script>
 </body>
-</html>    
+</html>
