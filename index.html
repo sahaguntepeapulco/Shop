@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="El Closet del Gato: productos seleccionados, ofertas y compras sencillas por WhatsApp.">
 <meta name="theme-color" content="#2c1810"><meta name="robots" content="index, follow">
 <meta property="og:type" content="website"><meta property="og:title" content="El Closet del Gato — Tienda en línea"><meta property="og:description" content="Productos seleccionados, ofertas y compra fácil por WhatsApp."><meta property="og:url" content="https://elclosetdelgato.netlify.app/">
@@ -50,12 +50,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--color-dark);
             background-color: var(--color-light);
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
         .container {
@@ -68,11 +74,33 @@
             background: var(--gradient-primary);
             color: var(--color-white);
             padding: var(--spacing-md) 0;
+            padding-top: calc(var(--spacing-md) + env(safe-area-inset-top));
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow-lg);
             animation: slideDown 0.5s ease;
+            width: 100%;
+        }
+
+        .hamburger-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--color-white);
+            padding: 8px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hamburger-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--color-accent);
         }
 
         @keyframes slideDown {
@@ -157,8 +185,11 @@
             background: rgba(255, 255, 255, 0.1);
             color: var(--color-white);
             width: 250px;
+            min-width: 0;
+            max-width: 100%;
             transition: var(--transition-base);
             font-size: 0.9rem;
+            text-overflow: ellipsis;
         }
 
         .search-input::placeholder {
@@ -1110,19 +1141,54 @@
         @media (max-width: 768px) {
             .header-content {
                 flex-wrap: wrap;
+                row-gap: var(--spacing-sm);
             }
-            .nav {
+            .hamburger-btn {
+                display: flex;
+                order: 2;
+                margin-left: auto;
+            }
+            .logo {
+                order: 1;
+            }
+            .header-actions {
                 order: 3;
                 width: 100%;
-                justify-content: center;
-                gap: var(--spacing-md);
-                margin-top: var(--spacing-sm);
+                gap: 8px;
+            }
+            .nav {
+                display: none;
+                order: 4;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(0,0,0,0.15);
+                border-radius: var(--radius-md);
+                overflow: hidden;
+            }
+            .nav.open {
+                display: flex;
+            }
+            .nav-link {
+                padding: var(--spacing-sm) var(--spacing-md);
+                width: 100%;
+            }
+            .nav-link::after {
+                display: none;
+            }
+            .nav-link.active {
+                background: rgba(255,255,255,0.1);
+            }
+            .search-container {
+                flex: 1 1 auto;
+                min-width: 0;
             }
             .search-input {
-                width: 180px;
+                width: 100%;
+                min-width: 0;
             }
             .search-input:focus {
-                width: 200px;
+                width: 100%;
             }
             .hero-title {
                 font-size: 2.5rem;
@@ -1229,8 +1295,16 @@
                     <h1>El Closet del Gato</h1>
                     <span class="tagline">Premium Collection</span>
                 </div>
-                
-                <nav class="nav">
+
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <nav class="nav" id="mainNav">
                     <a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a>
                     <a href="#productos" class="nav-link" data-section="productos">Productos</a>
                     <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
@@ -2016,6 +2090,23 @@
         }
 
         function inicializarNavegacion() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mainNav = document.getElementById('mainNav');
+
+            if (hamburgerBtn && mainNav) {
+                hamburgerBtn.addEventListener('click', () => {
+                    const isOpen = mainNav.classList.toggle('open');
+                    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!mainNav.classList.contains('open')) return;
+                    if (mainNav.contains(e.target) || hamburgerBtn.contains(e.target)) return;
+                    mainNav.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                });
+            }
+
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -2028,6 +2119,12 @@
                     
                     if (element) {
                         element.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    // Cierra el menú hamburguesa en móvil después de elegir una sección
+                    if (mainNav && mainNav.classList.contains('open')) {
+                        mainNav.classList.remove('open');
+                        if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
                     }
                 });
             });
