@@ -1,2 +1,0 @@
-# Shop
-articulos varios
