@@ -60,7 +60,6 @@
             color: var(--color-dark);
             background-color: var(--color-light);
             line-height: 1.6;
-            overflow-x: hidden;
             width: 100%;
         }
 
@@ -395,6 +394,22 @@
             align-items: center;
             gap: var(--spacing-md);
             flex-wrap: wrap;
+            position: sticky;
+            top: var(--header-h, 84px);
+            z-index: 500;
+            background: var(--color-light);
+            padding: 12px 0;
+            box-shadow: 0 4px 10px -6px rgba(0,0,0,0.15);
+            max-height: var(--controls-h, 400px);
+            overflow: hidden;
+            transition: max-height 0.28s ease, padding 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .controls.controls-hidden {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            box-shadow: none;
         }
 
         .filters {
@@ -1275,9 +1290,10 @@
 .hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.hero-note{margin-top:18px;font-size:.82rem;opacity:.8}.section-kicker{text-align:center;text-transform:uppercase;letter-spacing:2px;font-size:.72rem;color:var(--color-secondary);font-weight:700;margin-bottom:6px}
 .product-actions{display:flex;gap:7px;align-items:center}.quick-buy{background:#fff;border:1px solid var(--color-secondary);color:var(--color-primary);padding:8px 9px;border-radius:8px;font-size:.76rem;cursor:pointer}.quick-buy:hover{background:var(--color-light)}
 .product-meta{display:flex;align-items:center;gap:8px;min-height:22px;flex-wrap:wrap}.tag{font-size:.65rem;font-weight:700;padding:4px 7px;border-radius:999px;background:#f1e6d8;color:var(--color-primary)}.tag.offer{background:var(--color-primary);color:#fff}.tag.new{background:var(--color-success);color:#fff}.old-price{text-decoration:line-through;color:#999;font-size:.82rem;margin-right:6px}.stock{font-size:.72rem;color:#0b7a56;font-weight:600}.stock.low{color:#a15b00}
+.category-divider{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin:32px 0 6px}.category-divider:first-child{margin-top:0}.category-divider h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--color-primary);white-space:nowrap;margin:0}.category-divider::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--color-accent),transparent)}
 .toolbar-extra{display:flex;gap:8px;align-items:center}.sort-select{padding:9px 12px;border:2px solid var(--color-light);border-radius:8px;background:#fff;font-family:inherit}.results-count{font-size:.8rem;color:var(--color-gray)}
 .benefits{padding:28px 0;background:#fff}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.benefit-card{border:1px solid #eee3d8;border-radius:14px;padding:22px}.benefit-card strong{display:block;color:var(--color-primary);margin-bottom:4px}.benefit-card p{font-size:.85rem;color:var(--color-gray)}
-.newsletter-box{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:#fff;border:1px solid #eadfd2;border-radius:18px;padding:28px;margin:35px 0}.newsletter-form{display:flex;flex-direction:column;gap:8px}.newsletter-row{display:flex;gap:8px}.newsletter-row input{min-width:0;flex:1}.newsletter-box .consent{font-size:.73rem;color:var(--color-gray);line-height:1.4}.form-success{display:none;padding:12px;border-radius:8px;background:#e9f8f1;color:#126b4d;font-size:.85rem}.form-success.show{display:block}
+.newsletter-box{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:#fff;border:1px solid #eadfd2;border-radius:18px;padding:28px;margin:35px 0}.newsletter-form{display:flex;flex-direction:column;gap:12px}.newsletter-row{display:flex;gap:10px}.newsletter-row input{min-width:0;flex:1;padding:14px 16px;border:2px solid var(--color-light);border-radius:var(--radius-md);font-family:inherit;font-size:.95rem;background:var(--color-light);transition:var(--transition-base)}.newsletter-row input:focus{outline:none;border-color:var(--color-accent);background:#fff}.newsletter-row input::placeholder{color:var(--color-gray)}.newsletter-box .consent{display:flex;align-items:flex-start;gap:8px;font-size:.78rem;color:var(--color-gray);line-height:1.5;cursor:pointer}.newsletter-box .consent input{margin-top:3px;flex-shrink:0;cursor:pointer}.form-success{display:none;padding:12px;border-radius:8px;background:#e9f8f1;color:#126b4d;font-size:.85rem}.form-success.show{display:block}
 .whatsapp-float{position:fixed;right:18px;bottom:18px;z-index:1400;background:#1f9d65;color:#fff;text-decoration:none;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(0,0,0,.22);font-size:25px}.share-row{display:flex;gap:8px;margin-top:12px}.share-btn{border:1px solid #ddd;background:#fff;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.78rem}.share-btn:hover{background:var(--color-light)}
 .modal-wide{max-width:760px}.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px}.product-detail img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:var(--color-light)}.product-detail h2{font-family:'Playfair Display',serif;color:var(--color-primary);font-size:2rem}.detail-price{font-size:1.7rem;font-weight:700;color:var(--color-primary);margin:12px 0}.detail-description{color:var(--color-gray);line-height:1.7}.detail-list{padding-left:18px;margin:16px 0;color:var(--color-gray)}
 .install-banner{display:none;position:fixed;left:14px;right:14px;bottom:86px;z-index:1350;background:#fff;border:1px solid #eadfd2;border-radius:14px;padding:14px;box-shadow:var(--shadow-xl);align-items:center;justify-content:space-between;gap:10px}.install-banner.show{display:flex}.install-banner p{font-size:.78rem}.install-banner button{border:0;border-radius:8px;padding:9px 12px;background:var(--color-primary);color:#fff}
@@ -1350,7 +1366,7 @@
         <div class="hero-content">
             <h2 class="hero-title">Colección Exclusiva 2026</h2>
             <p class="hero-subtitle">Descubre productos premium seleccionados especialmente para ti</p>
-            <div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Explorar productos</button><button class="btn-secondary" onclick="mostrarOfertas()">Ver ofertas</button></div><p class="hero-note">Compra fácil · Atención por WhatsApp · Favoritos y carrito guardados en tu dispositivo</p>
+            <div class="hero-actions"><button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Explorar productos</button><button class="btn-primary" onclick="mostrarOfertas()">Ver ofertas</button></div><p class="hero-note">Compra fácil · Atención por WhatsApp · Favoritos y carrito guardados en tu dispositivo</p>
         </div>
         <div class="hero-decoration"></div>
     </section>
@@ -1360,34 +1376,36 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nuestros Productos</h2>
-                <div class="controls">
-                    <div class="filters">
-                        <button class="filter-btn active" data-category="todos">Todos</button>
-                        <button class="filter-btn" data-category="tecnologia">Tecnología</button>
-                        <button class="filter-btn" data-category="moda">Moda</button>
-                        <button class="filter-btn" data-category="hogar">Hogar</button>
-                        <button class="filter-btn" data-category="deportes">Deportes</button>
-                    </div>
-                    
-                    <div class="toolbar-extra"><span class="results-count" id="resultsCount"></span><select id="sortSelect" class="sort-select" aria-label="Ordenar productos"><option value="relevancia">Ordenar</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="nombre">Nombre A-Z</option></select></div><div class="view-controls"><button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                        </button>
-                        <button class="view-btn" data-view="list" title="Vista en lista">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="8" y1="6" x2="21" y2="6"></line>
-                                <line x1="8" y1="12" x2="21" y2="12"></line>
-                                <line x1="8" y1="18" x2="21" y2="18"></line>
-                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                            </svg>
-                        </button>
-                    </div>
+            </div>
+
+            <div class="controls">
+                <div class="filters">
+                    <button class="filter-btn active" data-category="todos">Todos</button>
+                    <button class="filter-btn" data-category="joyeria">Joyeria</button>
+                    <button class="filter-btn" data-category="pasteleria">Pasteleria</button>
+                    <button class="filter-btn" data-category="escolares">Escolares</button>
+                    <button class="filter-btn" data-category="varios">Varios</button>
+                    <button class="filter-btn" data-category="moda">Moda</button>
+                </div>
+                
+                <div class="toolbar-extra"><span class="results-count" id="resultsCount"></span><select id="sortSelect" class="sort-select" aria-label="Ordenar productos"><option value="relevancia">Ordenar</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="nombre">Nombre A-Z</option></select></div><div class="view-controls"><button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </button>
+                    <button class="view-btn" data-view="list" title="Vista en lista">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                    </button>
                 </div>
             </div>
 
@@ -1396,7 +1414,7 @@
     </section>
 
     <section class="benefits"><div class="container"><p class="section-kicker">Una compra más sencilla</p><h2 class="section-title" style="margin-bottom:22px">Pensado para ti</h2><div class="benefit-grid"><div class="benefit-card"><strong>🛒 Carrito persistente</strong><p>Tus productos y favoritos se guardan en este dispositivo.</p></div><div class="benefit-card"><strong>📲 Pedido por WhatsApp</strong><p>El pedido se prepara automáticamente con productos, cantidades, total y número.</p></div><div class="benefit-card"><strong>🔔 Promociones</strong><p>Suscríbete voluntariamente para recibir novedades y ofertas.</p></div></div></div></section>
-<section class="container" id="newsletter" aria-label="Newsletter"><div class="newsletter-box"><div><p class="section-kicker" style="text-align:left">Promociones</p><h2 style="font-family:'Playfair Display',serif;color:var(--color-primary);margin-bottom:8px">Recibe ofertas antes que nadie</h2><p style="color:var(--color-gray);font-size:.9rem">Tu suscripción queda registrada en Netlify Forms y después puede conectarse a un servicio de campañas.</p></div><form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm"><input type="hidden" name="form-name" value="newsletter"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nueva suscripción — El Closet del Gato"><div class="newsletter-row"><input type="text" name="name" placeholder="Tu nombre (opcional)" autocomplete="name"><input type="email" name="email" placeholder="Tu correo electrónico" autocomplete="email" required></div><label class="consent"><input type="checkbox" name="consent" value="yes" required> Acepto recibir promociones y novedades. Puedo cancelar cuando quiera.</label><button class="btn-primary" type="submit">Quiero recibir ofertas</button><div class="form-success" id="newsletterSuccess">¡Listo! Tu suscripción fue enviada correctamente.</div></form></div></section>
+<section class="container" id="newsletter" aria-label="Newsletter"><div class="newsletter-box"><div><p class="section-kicker" style="text-align:left">Promociones</p><h2 style="font-family:'Playfair Display',serif;color:var(--color-primary);margin-bottom:8px">Recibe ofertas antes que nadie</h2><p style="color:var(--color-gray);font-size:.9rem">Déjanos tu teléfono y te avisamos por WhatsApp cuando haya descuentos o productos nuevos.</p></div><form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm"><input type="hidden" name="form-name" value="newsletter"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nueva suscripción — El Closet del Gato"><div class="newsletter-row"><input type="text" name="name" placeholder="Tu nombre (opcional)" autocomplete="name"><input type="tel" name="phone" placeholder="Tu número de teléfono" autocomplete="tel" required></div><label class="consent"><input type="checkbox" name="consent" value="yes" required> Acepto recibir promociones y novedades por WhatsApp. Puedo cancelar cuando quiera.</label><button class="btn-primary" type="submit">Quiero recibir ofertas</button><div class="form-success" id="newsletterSuccess">¡Listo! Tu suscripción fue enviada correctamente.</div></form></div></section>
 <section class="contact-section" id="contacto">
         <div class="container">
             <h2 class="section-title">Contáctanos</h2>
@@ -1460,7 +1478,10 @@
                         <input type="text" id="nombre" name="name" placeholder="Nombre completo" autocomplete="name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Correo electrónico" autocomplete="email" required>
+                        <input type="tel" id="telefonoContacto" name="phone" placeholder="Número de teléfono" autocomplete="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Correo electrónico (opcional)" autocomplete="email">
                     </div>
                     <div class="form-group">
                         <textarea id="mensaje" name="message" rows="5" placeholder="Mensaje" required></textarea>
@@ -1619,7 +1640,7 @@
         // IMPORTANTE: Cambia este número por tu número de WhatsApp
         // Formato: código de país + número (sin espacios ni guiones)
         // Ejemplo: 5217791234567 (52 = México, 779 = código de área, 1234567 = número)
-        const WHATSAPP_NUMBER = '527297563604';
+        const WHATSAPP_NUMBER = '5217297563604';
         const STORE_NAME='El Closet del Gato'; const STORE_URL='https://elclosetdelgato.netlify.app/';
         // Llave pública VAPID para notificaciones push (esta SÍ va en el código, es pública a propósito)
         const VAPID_PUBLIC_KEY = 'BJ-JArjXXzITME9rMXTYj-wlD5Qg38xFjxipjhXOgmqZXJDmBMflOY_NAYT-ojZNXKq8-S1QKJnjvKAxbK9cZSM';
@@ -1628,134 +1649,129 @@
         // DATOS DE PRODUCTOS (CON IMÁGENES LOCALES)
         // ========================================
         const productos = [
+            // ═══════════════════════════════════════
+            // 🎂 PASTELERÍA
+            // ═══════════════════════════════════════
             {
                 id: 1,
-                nombre: "Vestido Gris",
-                descripcion: "bonito Verstido Gris",
+                nombre: "Pastel de cumpleaños",
+                descripcion: "Pastel con perlas",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
-                precio: 12999,
-                categoria: "Ropa",
-                imagen: "images/1.jpg" // <--- Cambia por el nombre de tu imagen
+                precio: 399,
+				stock: 3, // <--- agrega esta línea con el número que quieras
+                categoria: "pasteleria",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/p1.jpg" // <--- Cambia por el nombre de imagen
             },
             {
                 id: 2,
-                nombre: "Vestido Verde",
-                descripcion: "Bonito Vestido Verde",
-                precio: 24999,
-                categoria: "Ropa",
+                nombre: "Pastel decorado",
+                descripcion: "Pastel con naturaleza",
+                precio: 499,
+                categoria: "pasteleria",
                 nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
-                imagen: "images/2.jpg" // <--- Cambia por el nombre de tu imagen
+                imagen: "images/p2.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
                 id: 3,
-                nombre: "Vestido Rosa",
-                descripcion: "Bonito Vestido Rosa",
-                precio: 3499,
+                nombre: "Pastel Among Us",
+                descripcion: "Pastel de figura",
+                precio: 399,
                 oferta: true, // <--- Así se marca un producto EN OFERTA
-                precioAnterior: 4299, // <--- Precio tachado que se muestra arriba del precio actual
-                categoria: "Ropa",
-                imagen: "images/3.jpg"
+                precioAnterior: 499, // <--- Precio tachado que se muestra arriba del precio actual
+                categoria: "pasteleria",
+                imagen: "images/p3.jpg"
             },
             {
                 id: 4,
-                nombre: "Chaqueta de Cuero Premium",
-                descripcion: "Cuero genuino italiano, diseño exclusivo",
-                precio: 5999,
+                nombre: "Pastel con naturaleza",
+                descripcion: "Pastem dorado con naturaleza",
+                precio: 599,
                 stock: 2, // <--- Número de piezas disponibles (si no lo pones, se asume 5)
-                categoria: "moda",
-                imagen: "images/producto4.jpg"
+                categoria: "pasteleria",
+                imagen: "images/p4.jpg"
             },
             {
                 id: 5,
-                nombre: "Reloj Inteligente Elite",
-                descripcion: "Monitor de salud 24/7, GPS integrado",
+                nombre: "Pastel de bodas",
+                descripcion: "Pastel con decorados con naturaleza",
                 precio: 4799,
-                categoria: "tecnologia",
-                imagen: "images/producto5.jpg"
+                categoria: "pasteleria",
+                imagen: "images/p5.jpg"
             },
             {
                 id: 6,
-                nombre: "Zapatillas Deportivas Pro",
-                descripcion: "Tecnología de amortiguación avanzada",
-                precio: 2899,
-                categoria: "deportes",
-                imagen: "images/producto6.jpg"
+                nombre: "Pastel decorado",
+                descripcion: "Diseño de escenas de caricaturas",
+                precio: 399,
+                categoria: "pasteleria",
+                imagen: "images/p6.jpg"
             },
             {
                 id: 7,
-                nombre: "Bolso de Diseñador",
-                descripcion: "Piel de alta calidad, edición limitada",
-                precio: 8999,
-                categoria: "moda",
-                imagen: "images/producto7.jpg"
+                nombre: "Pastel de Chocolate",
+                descripcion: "pastel de chocolates",
+                precio: 499,
+                categoria: "pasteleria",
+                imagen: "images/p7.jpg"
             },
             {
                 id: 8,
-                nombre: "Cafetera Automática",
-                descripcion: "Espresso profesional en casa",
-                precio: 6499,
-                categoria: "hogar",
-                imagen: "images/producto8.jpg"
+                nombre: "Pastel de mascotas",
+                descripcion: "Pastel de foto de mascotas",
+                precio: 699,
+                categoria: "pasteleria",
+                imagen: "images/p8.jpg"
             },
             {
                 id: 9,
-                nombre: "Lámpara de Diseño",
-                descripcion: "Iluminación LED inteligente, control por app",
-                precio: 1999,
-                categoria: "hogar",
-                imagen: "images/producto9.jpg"
+                nombre: "Pastel de Frutas",
+                descripcion: "Pastel con frutas",
+				destacado: true,
+                precio: 999,
+                categoria: "pasteleria",
+				nuevo: true,
+                imagen: "images/p9.jpg"
             },
             {
                 id: 10,
-                nombre: "Gafas de Sol Premium",
-                descripcion: "Protección UV400, montura titanio",
-                precio: 3299,
-                categoria: "moda",
-                imagen: "images/producto10.jpg"
+                nombre: "Pastel de osos",
+                descripcion: "Pastel de dibujos animados",
+                precio: 299,
+                categoria: "pasteleria",
+                imagen: "images/p10.jpg"
             },
+			// ═══════════════════════════════════════
+            // 💍 JOYERÍA
+            // ═══════════════════════════════════════
             {
-                id: 11,
-                nombre: "Bicicleta de Montaña",
-                descripcion: "Fibra de carbono, 27 velocidades",
-                precio: 15999,
-                categoria: "deportes",
-                imagen: "images/producto11.jpg"
+                id: 11,                                
+                nombre: "Cadena de plata",
+                descripcion: "Cadena de 32 cm",
+                destacado: true,
+                precio: 399,
+                categoria: "joyeria",
+                imagen: "images/j1.jpg"
             },
-            {
-                id: 12,
-                nombre: "Set de Sartenes Premium",
-                descripcion: "Antiadherente de cerámica, 5 piezas",
-                precio: 2499,
-                categoria: "hogar",
-                imagen: "images/producto12.jpg"
-            },
-            {
-                id: 13,
-                nombre: "Cámara Fotográfica Profesional",
-                descripcion: "Sensor full-frame, 4K video",
-                precio: 34999,
-                categoria: "tecnologia",
-                imagen: "images/producto13.jpg"
-            },
-            {
-                id: 14,
-                nombre: "Perfume de Lujo",
-                descripcion: "Fragancia exclusiva, 100ml",
-                precio: 4599,
-                categoria: "moda",
-                imagen: "images/producto14.jpg"
-            },
-            {
-                id: 15,
-                nombre: "Mochila de Viaje",
-                descripcion: "Resistente al agua, compartimento laptop",
-                precio: 1899,
-                categoria: "deportes",
-                imagen: "images/producto15.jpg"
-            }
+            // ... (aquí seguirían tus demás productos de joyería) ...
         ];
 
         const productosBase=productos.map((p,i)=>({...p,categoria:(p.categoria.toLowerCase()==='ropa'?'moda':p.categoria.toLowerCase()),stock:p.stock??5,destacado:p.destacado===true,oferta:p.oferta===true,nuevo:p.nuevo===true,precioAnterior:p.oferta===true&&p.precioAnterior?p.precioAnterior:null})); productos.length=0; productos.push(...productosBase); let sortActual='relevancia'; let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        // Nombres bonitos para los títulos de categoría que se muestran en la página (vista "Todos")
+        const nombresCategorias = {
+            pasteleria: '🎂 Pastelería',
+            joyeria: '💍 Joyería',
+            escolares: '🎒 Escolares',
+            varios: '🛍️ Varios',
+            moda: '👗 Moda',
+            deportes: '⚽ Deportes',
+            hogar: '🏠 Hogar',
+            tecnologia: '💻 Tecnología'
+        };
+        function nombreCategoria(cat) {
+            return nombresCategorias[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
+        }
         let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
         let categoriaActual = 'todos';
         let vistaActual = 'grid';
@@ -1783,13 +1799,71 @@
         const favoritesBadge = document.getElementById('favoritesBadge');
         const contactForm = document.getElementById('contactForm');
 
+        // Mide la altura real del encabezado (cambia entre celular/escritorio y si el menú
+        // hamburguesa hace que ocupe 1 o 2 filas) para que la barra de categorías se pegue
+        // justo debajo, sin dejar espacio ni encimarse.
+        function actualizarAlturaHeader() {
+            const header = document.querySelector('.header');
+            if (header) {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+        }
+
+        function actualizarAlturaControls() {
+            const controls = document.querySelector('.controls');
+            if (controls && !controls.classList.contains('controls-hidden')) {
+                document.documentElement.style.setProperty('--controls-h', controls.scrollHeight + 'px');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             renderizarProductos();
             actualizarCarrito();
             actualizarFavoritos();
             inicializarEventos();
             actualizarBadges();
+            aplicarCategoriaDesdeURL();
+            actualizarAlturaHeader();
+            actualizarAlturaControls();
         });
+
+        window.addEventListener('resize', actualizarAlturaHeader);
+        window.addEventListener('orientationchange', actualizarAlturaHeader);
+        window.addEventListener('resize', actualizarAlturaControls);
+        window.addEventListener('orientationchange', actualizarAlturaControls);
+
+        // ========================================
+        // ESCONDER/MOSTRAR LA BARRA DE CATEGORÍAS SEGÚN LA DIRECCIÓN DEL SCROLL
+        // Al bajar (ver más productos) se esconde para dar más espacio.
+        // Al subir un poco, reaparece de inmediato.
+        // ========================================
+        (function () {
+            let ultimoScrollY = window.scrollY;
+            const UMBRAL = 6; // píxeles mínimos de movimiento para reaccionar (evita "parpadeos")
+
+            window.addEventListener('scroll', () => {
+                const controls = document.querySelector('.controls');
+                if (!controls) return;
+
+                const header = document.querySelector('.header');
+                const headerH = header ? header.offsetHeight : 0;
+                const actualScrollY = window.scrollY;
+                const diferencia = actualScrollY - ultimoScrollY;
+
+                if (actualScrollY <= headerH) {
+                    // Muy arriba de la página: siempre visible
+                    controls.classList.remove('controls-hidden');
+                } else if (diferencia > UMBRAL) {
+                    // Deslizando hacia abajo -> esconder
+                    controls.classList.add('controls-hidden');
+                } else if (diferencia < -UMBRAL) {
+                    // Deslizando hacia arriba -> mostrar
+                    controls.classList.remove('controls-hidden');
+                }
+
+                ultimoScrollY = actualScrollY;
+            }, { passive: true });
+        })();
 
         function renderizarProductos() {
             let productosFiltrados = productos.filter(producto => {
@@ -1813,11 +1887,31 @@
             }
 
             productsGrid.className = vistaActual === 'grid' ? 'products-grid' : 'products-grid list-view';
+
+            // Cuando se ve "Todos" en el orden por defecto, agrupamos visualmente por categoría
+            // y ponemos un título arriba de cada grupo (ej: "🎂 Pastelería", luego "⚽ Deportes"...)
+            // Se agrupa TODA la categoría junta (aunque en la lista de datos estén mezcladas),
+            // para que un mismo título nunca se repita dos veces en la página.
+            const mostrarTitulos = categoriaActual === 'todos' && sortActual === 'relevancia';
+            if (mostrarTitulos) {
+                const primerIndice = {};
+                productosFiltrados.forEach((p, i) => { if (!(p.categoria in primerIndice)) primerIndice[p.categoria] = i; });
+                productosFiltrados = productosFiltrados
+                    .map((p, i) => ({ p, i }))
+                    .sort((a, b) => (primerIndice[a.p.categoria] - primerIndice[b.p.categoria]) || (a.i - b.i))
+                    .map(x => x.p);
+            }
+            let categoriaAnterior = null;
             
             productsGrid.innerHTML = productosFiltrados.map(producto => {
                 const esFavorito = favoritos.some(fav => fav.id === producto.id);
+                let tituloCategoria = '';
+                if (mostrarTitulos && producto.categoria !== categoriaAnterior) {
+                    tituloCategoria = `<div class="category-divider"><h3>${nombreCategoria(producto.categoria)}</h3></div>`;
+                    categoriaAnterior = producto.categoria;
+                }
                 
-                return `
+                return `${tituloCategoria}
                     <div class="product-card" data-product-id="${producto.id}">
                         <div class="product-image-container">
                             <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy" width="400" height="400" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 400%27%3E%3Crect width=%27400%27 height=%27400%27 fill=%27%23f8f6f3%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27sans-serif%27 font-size=%2718%27 fill=%27%232c1810%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${encodeURIComponent(producto.nombre)}%3C/text%3E%3C/svg%3E'">
@@ -1971,7 +2065,7 @@
             renderizarProductos();
         }
 
-        function filtrarPorCategoria(categoria) {
+        function filtrarPorCategoria(categoria, opts) {
             categoriaActual = categoria;
             renderizarProductos();
             
@@ -1981,6 +2075,29 @@
                     btn.classList.add('active');
                 }
             });
+
+            // Actualiza la URL para que la categoría se pueda compartir como link (sin recargar la página)
+            if (!opts || !opts.skipUrlUpdate) {
+                const url = new URL(window.location.href);
+                if (categoria === 'todos') {
+                    url.searchParams.delete('categoria');
+                } else {
+                    url.searchParams.set('categoria', categoria);
+                }
+                window.history.replaceState({}, '', url);
+            }
+        }
+
+        // Si se llega desde moda.html / tecnologia.html / etc. (o con ?categoria=xxx en la URL),
+        // aplica ese filtro automáticamente al cargar la tienda.
+        function aplicarCategoriaDesdeURL() {
+            const params = new URLSearchParams(window.location.search);
+            const categoria = params.get('categoria');
+            const categoriasValidas = ['todos', 'joyeria', 'pasteleria', 'escolares', 'varios', 'moda'];
+            if (categoria && categoriasValidas.includes(categoria)) {
+                filtrarPorCategoria(categoria, { skipUrlUpdate: true });
+                document.getElementById('productos').scrollIntoView({ behavior: 'instant' in window ? 'instant' : 'auto' });
+            }
         }
 
         function cambiarVista(vista) {
@@ -2074,19 +2191,36 @@
 
         async function enviarPedidoWhatsApp(e){e.preventDefault();if(!carrito.length){mostrarToast('El carrito está vacío','error');return;}const nombre=document.getElementById('checkoutName').value.trim(),telefono=document.getElementById('checkoutPhone').value.trim(),direccion=document.getElementById('checkoutAddress').value.trim(),ciudad=document.getElementById('checkoutCity').value,metodoPago=document.querySelector('input[name="payment"]:checked').value,total=carrito.reduce((s,i)=>s+i.precio*i.cantidad,0);const orderId='GATO-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();const lista=carrito.map(i=>`• ${i.nombre} — ${i.cantidad} x $${i.precio.toLocaleString('es-MX')} = $${(i.precio*i.cantidad).toLocaleString('es-MX')}`).join('\n');const mensaje=`🛍️ *PEDIDO ${orderId} — ${STORE_NAME}*\n\n👤 *Cliente:* ${nombre}\n📱 *Teléfono:* ${telefono}\n📍 *Dirección:* ${direccion}, ${ciudad}\n💳 *Pago:* ${metodoPago}\n\n📦 *PRODUCTOS:*\n${lista}\n\n💰 *TOTAL: $${total.toLocaleString('es-MX')}*\n\n¿Me confirman disponibilidad y envío?`;try{const fd=new URLSearchParams();fd.append('form-name','orders');fd.append('order_id',orderId);fd.append('name',nombre);fd.append('email',document.getElementById('checkoutEmail')?.value||'');fd.append('phone',telefono);fd.append('city',ciudad);fd.append('payment',metodoPago);fd.append('total',String(total));fd.append('items',lista);await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,'_blank','noopener');localStorage.setItem('lastOrder',JSON.stringify({orderId,nombre,total,createdAt:new Date().toISOString()}));mostrarToast(`Pedido ${orderId} preparado`,'success');setTimeout(()=>{toggleModal(checkoutModal);carrito=[];actualizarCarrito();e.target.reset()},700);}
 
-        function enviarContacto(e) {
+        async function enviarContacto(e) {
             e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const mensaje = document.getElementById('mensaje').value;
-            
-            mostrarToast('Enviando mensaje...', 'success');
-            
-            setTimeout(() => {
-                mostrarToast(`¡Gracias ${nombre}! Te contactaremos pronto`, 'success');
-                e.target.reset();
-            }, 1000);
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefonoContacto').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            if (!nombre || !telefono || !mensaje) {
+                mostrarToast('Completa nombre, teléfono y mensaje', 'error');
+                return;
+            }
+
+            // Respaldo en Netlify Forms (aparece en tu panel de Netlify)
+            try {
+                const fd = new URLSearchParams(new FormData(e.target));
+                await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: fd.toString() });
+            } catch (err) { console.warn(err); }
+
+            // Envío directo a tu WhatsApp
+            const whatsMsg = `📩 *MENSAJE DE CONTACTO — ${STORE_NAME}*\n\n` +
+                              `👤 *Nombre:* ${nombre}\n` +
+                              `📱 *Teléfono:* ${telefono}\n` +
+                              (email ? `📧 *Correo:* ${email}\n` : '') +
+                              `\n💬 *Mensaje:*\n${mensaje}`;
+
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsMsg)}`, '_blank', 'noopener');
+
+            mostrarToast(`¡Gracias ${nombre}! Te contactaremos pronto`, 'success');
+            e.target.reset();
         }
 
         function inicializarNavegacion() {
@@ -2097,6 +2231,7 @@
                 hamburgerBtn.addEventListener('click', () => {
                     const isOpen = mainNav.classList.toggle('open');
                     hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    setTimeout(actualizarAlturaHeader, 50);
                 });
 
                 document.addEventListener('click', (e) => {
@@ -2155,7 +2290,7 @@
             
             checkoutBtn.addEventListener('click', procesarCheckout);
             closeCheckout.addEventListener('click', () => toggleModal(checkoutModal));
-            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);const sortSelect=document.getElementById('sortSelect');sortSelect.addEventListener('change',e=>{sortActual=e.target.value;renderizarProductos()});const newsletterForm=document.getElementById('newsletterForm');newsletterForm.addEventListener('submit',async e=>{e.preventDefault();try{const fd=new URLSearchParams(new FormData(newsletterForm));await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()});newsletterForm.reset();document.getElementById('newsletterSuccess').classList.add('show');mostrarToast('¡Suscripción enviada!','success')}catch(err){mostrarToast('No se pudo enviar. Intenta de nuevo.','error')}});
+            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);const sortSelect=document.getElementById('sortSelect');sortSelect.addEventListener('change',e=>{sortActual=e.target.value;renderizarProductos()});const newsletterForm=document.getElementById('newsletterForm');newsletterForm.addEventListener('submit',async e=>{e.preventDefault();const nombreSub=newsletterForm.querySelector('[name="name"]').value.trim();const telSub=newsletterForm.querySelector('[name="phone"]').value.trim();try{const fd=new URLSearchParams(new FormData(newsletterForm));await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}const msgSub=`📬 *NUEVA SUSCRIPCIÓN A PROMOCIONES — ${STORE_NAME}*\n\n`+(nombreSub?`👤 *Nombre:* ${nombreSub}\n`:'')+`📱 *Teléfono:* ${telSub}\n\nQuiero recibir ofertas y novedades por WhatsApp.`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msgSub)}`,'_blank','noopener');newsletterForm.reset();document.getElementById('newsletterSuccess').classList.add('show');mostrarToast('¡Suscripción enviada!','success')});
             
             contactForm.addEventListener('submit', enviarContacto);
             
