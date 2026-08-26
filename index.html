@@ -1383,7 +1383,7 @@
                     <button class="filter-btn active" data-category="todos">Todos</button>
                     <button class="filter-btn" data-category="joyeria">Joyeria</button>
                     <button class="filter-btn" data-category="pasteleria">Pasteleria</button>
-                    <button class="filter-btn" data-category="escolares">Escolares</button>
+                    <button class="filter-btn" data-category="belleza">Belleza</button>
                     <button class="filter-btn" data-category="varios">Varios</button>
                     <button class="filter-btn" data-category="moda">Moda</button>
                 </div>
@@ -1427,7 +1427,7 @@
                         </svg>
                         <div>
                             <h3>Dirección</h3>
-                            <p>Av. Principal 123, Ciudad Sahagún, Hidalgo, México</p>
+                            <p>Ciudad Sahagún, Hidalgo, México</p>
                         </div>
                     </div>
                     
@@ -1437,7 +1437,7 @@
                         </svg>
                         <div>
                             <h3>Teléfono</h3>
-                            <p>+52 (779) 123-4567</p>
+                            <p>+52 (729) 756-3604</p>
                         </div>
                     </div>
                     
@@ -1649,11 +1649,236 @@
         // DATOS DE PRODUCTOS (CON IMÁGENES LOCALES)
         // ========================================
         const productos = [
+			// ═══════════════════════════════════════
+            // 💍 JOYERÍA
             // ═══════════════════════════════════════
+            {
+                id: 1,                                
+                nombre: "Aretes de plata",
+                descripcion: "Aretess de plata",
+                destacado: true,
+                precio: 155,
+                categoria: "joyeria",
+                imagen: "images/c1.jpg"
+            },
+			{
+                id: 2,                                
+                nombre: "Arracadas de plata",
+                descripcion: "Arracadas de plata",
+                destacado: true,
+                precio: 60,
+                categoria: "joyeria",
+                imagen: "images/c2.jpg"
+            },
+			{
+                id: 3,                                
+                nombre: "Pulsera de plata",
+                descripcion: "Pulsera de bisuteria fina",
+                destacado: true,
+                precio: 199,
+                categoria: "joyeria",
+                imagen: "images/c3.jpg"
+            },
+			{
+                id: 4,                                
+                nombre: "Pulsera de plata",
+                descripcion: "Pulsera de bisuteria fina color verde",
+                destacado: true,
+                precio: 180,
+                categoria: "joyeria",
+                imagen: "images/c4.jpg"
+            },
+			{
+                id: 5,                                
+                nombre: "Pulsera de plata",
+                descripcion: "Pulsera de bisuteria fina color rojo",
+                destacado: true,
+                precio: 180,
+                categoria: "joyeria",
+                imagen: "images/c5.jpg"
+            },
+			{
+                id: 6,                                
+                nombre: "Esclava de Acero 141",
+                descripcion: "Esclava de Acero-141",
+                destacado: true,
+                precio: 90,
+                categoria: "joyeria",
+                imagen: "images/c6.jpg"
+            },
+			{
+                id: 7,                                
+                nombre: "Esclava de Acero 141",
+                descripcion: "Esclava de Acero-141",
+                destacado: true,
+                precio: 180,
+                categoria: "joyeria",
+                imagen: "images/c7.jpg"
+            },
+			{
+                id: 8,                                
+                nombre: "Pulsera con baño de plata",
+                descripcion: "Pulsera con pedreria",
+                destacado: true,
+                precio: 50,
+                categoria: "joyeria",
+                imagen: "images/c8.jpg"
+            },
+			{
+                id: 9,                                
+                nombre: "Cadena de plata 925",
+                descripcion: "Cadena de plata",
+                destacado: true,
+                precio: 299,
+                categoria: "joyeria",
+                imagen: "images/c9.jpg"
+            },
+			{
+                id: 10,                                
+                nombre: "Dije de plata 925",
+                descripcion: "Dije de corazon de plata 925",
+                destacado: true,
+                precio: 390,
+                categoria: "joyeria",
+                imagen: "images/c10.jpg"
+            },
+			// ═══════════════════════════════════════
+            // 🛍️ VARIOS
+            // ═══════════════════════════════════════
+			{
+                id: 11,
+                nombre: "Tatuajes temporales",
+                descripcion: "kit de tatuajes temporales",
+                destacado: true, // <--- Así se marca un producto como DESTACADO
+                precio: 399,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab1.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 12,
+                nombre: "Banner Display",
+                descripcion: "Fibra estructura 80X1.80cm con lona",
+                destacado: true, // <--- Así se marca un producto como DESTACADO
+                precio: 420,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab2.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 13,
+                nombre: "Caballete publicitario",
+                descripcion: "Plegable, doble cara 90X60cm con lona ambos lados",
+                destacado: true, // <--- Así se marca un producto como DESTACADO
+                precio: 750,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab2.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 14,
+                nombre: "Etiquetas, Flayers, Lonas",
+                descripcion: "Etiquetas $190 X 150pz, Flayers $690, Lonas 1X1 $150",
+                precio: 390,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab3.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 15,
+                nombre: "Bolsa Ecologica",
+                descripcion: "Tela de manta 30X30cm 100% algodon, color Blanco y Crudo, Tecnica DTF",
+                precio: 390,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab4.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 16,
+                nombre: "Gorras",
+                descripcion: "Bordado $90, DTF $80",
+                precio: 90,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab5.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 17,
+                nombre: "Vaso Clitter",
+                descripcion: "Colores disponibles Negro, Azul, Amarillo y Transparente 20oz Impresion UV logo, MAYOREO $25",
+                precio: 30,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab6.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 18,
+                nombre: "Vaso de Cristal",
+                descripcion: "Color saturación sin limite, MAYOREO $69",
+                precio: 90,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab7.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 19,
+                nombre: "Destapador",
+                descripcion: "Destapador con logo MAYOREO $12",
+                precio: 12,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab7.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 20,
+                nombre: "Llaveros",
+                descripcion: "precio por mayoreo $18, Llavero Destapador con logo Mayoreo $9",
+                precio: 30,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab8.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 21,
+                nombre: "Llaveros",
+                descripcion: "Llaveros Precio de MAYOREO $13,",
+                precio: 17,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab9.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 22,
+                nombre: "Playeras",
+                descripcion: "Playera basica personalizada, 100% algodon, Tallas CH, M, G, XG, precio MAYOREO $190",
+                precio: 250,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab10.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 23,
+                nombre: "Taza de Ceramica",
+                descripcion: "Acabado Brillante o Mate, Color saturacion sin limite, MAYOREO $39",
+                precio: 70,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab11.jpg" // <--- Cambia por el nombre de imagen
+            },
+			{
+                id: 24,
+                nombre: "Vaso de Plastico",
+                descripcion: "Acabado brillante o mate, color Blanco, medidas 6X16cm, impresion UV, mayoreo $16",
+                precio: 25,
+                categoria: "varios",
+				nuevo: true, // <--- Así se marca un producto como NUEVO (quita esta línea cuando ya no sea nuevo)
+                imagen: "images/ab11.jpg" // <--- Cambia por el nombre de imagen
+            },
+			// ═══════════════════════════════════════
             // 🎂 PASTELERÍA
             // ═══════════════════════════════════════
             {
-                id: 1,
+                id: 25,
                 nombre: "Pastel de cumpleaños",
                 descripcion: "Pastel con perlas",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1664,7 +1889,7 @@
                 imagen: "images/p1.jpg" // <--- Cambia por el nombre de imagen
             },
             {
-                id: 2,
+                id: 26,
                 nombre: "Pastel decorado",
                 descripcion: "Pastel con naturaleza",
                 precio: 499,
@@ -1673,7 +1898,7 @@
                 imagen: "images/p2.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
-                id: 3,
+                id: 27,
                 nombre: "Pastel Among Us",
                 descripcion: "Pastel de figura",
                 precio: 399,
@@ -1683,7 +1908,7 @@
                 imagen: "images/p3.jpg"
             },
             {
-                id: 4,
+                id: 28,
                 nombre: "Pastel con naturaleza",
                 descripcion: "Pastem dorado con naturaleza",
                 precio: 599,
@@ -1692,7 +1917,7 @@
                 imagen: "images/p4.jpg"
             },
             {
-                id: 5,
+                id: 29,
                 nombre: "Pastel de bodas",
                 descripcion: "Pastel con decorados con naturaleza",
                 precio: 4799,
@@ -1700,7 +1925,7 @@
                 imagen: "images/p5.jpg"
             },
             {
-                id: 6,
+                id: 30,
                 nombre: "Pastel decorado",
                 descripcion: "Diseño de escenas de caricaturas",
                 precio: 399,
@@ -1708,7 +1933,7 @@
                 imagen: "images/p6.jpg"
             },
             {
-                id: 7,
+                id: 31,
                 nombre: "Pastel de Chocolate",
                 descripcion: "pastel de chocolates",
                 precio: 499,
@@ -1716,7 +1941,7 @@
                 imagen: "images/p7.jpg"
             },
             {
-                id: 8,
+                id: 32,
                 nombre: "Pastel de mascotas",
                 descripcion: "Pastel de foto de mascotas",
                 precio: 699,
@@ -1724,7 +1949,7 @@
                 imagen: "images/p8.jpg"
             },
             {
-                id: 9,
+                id: 33,
                 nombre: "Pastel de Frutas",
                 descripcion: "Pastel con frutas",
 				destacado: true,
@@ -1734,26 +1959,15 @@
                 imagen: "images/p9.jpg"
             },
             {
-                id: 10,
+                id: 34,
                 nombre: "Pastel de osos",
                 descripcion: "Pastel de dibujos animados",
                 precio: 299,
                 categoria: "pasteleria",
                 imagen: "images/p10.jpg"
             },
-			// ═══════════════════════════════════════
-            // 💍 JOYERÍA
-            // ═══════════════════════════════════════
-            {
-                id: 11,                                
-                nombre: "Cadena de plata",
-                descripcion: "Cadena de 32 cm",
-                destacado: true,
-                precio: 399,
-                categoria: "joyeria",
-                imagen: "images/j1.jpg"
-            },
-            // ... (aquí seguirían tus demás productos de joyería) ...
+			
+            // ... (aquí seguirían los demás productos de joyería) ...
         ];
 
         const productosBase=productos.map((p,i)=>({...p,categoria:(p.categoria.toLowerCase()==='ropa'?'moda':p.categoria.toLowerCase()),stock:p.stock??5,destacado:p.destacado===true,oferta:p.oferta===true,nuevo:p.nuevo===true,precioAnterior:p.oferta===true&&p.precioAnterior?p.precioAnterior:null})); productos.length=0; productos.push(...productosBase); let sortActual='relevancia'; let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -2093,7 +2307,7 @@
         function aplicarCategoriaDesdeURL() {
             const params = new URLSearchParams(window.location.search);
             const categoria = params.get('categoria');
-            const categoriasValidas = ['todos', 'joyeria', 'pasteleria', 'escolares', 'varios', 'moda'];
+            const categoriasValidas = ['todos', 'belleza', 'joyeria', 'varios', 'hogar', 'moda'];
             if (categoria && categoriasValidas.includes(categoria)) {
                 filtrarPorCategoria(categoria, { skipUrlUpdate: true });
                 document.getElementById('productos').scrollIntoView({ behavior: 'instant' in window ? 'instant' : 'auto' });
