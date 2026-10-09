@@ -1371,7 +1371,7 @@
         <div class="hero-decoration"></div>
     </section>
 
-    <section class="trust-strip" aria-label="Ventajas de compra"><div class="trust-item"><strong>🚚 Envíos</strong><span>Consulta cobertura y tiempos</span></div><div class="trust-item"><strong>💬 WhatsApp</strong><span>Atención directa y rápida</span></div><div class="trust-item"><strong>💳 Pago sencillo</strong><span>Transferencia o contra entrega</span></div><div class="trust-item"><strong>🔒 Compra clara</strong><span>Información antes de confirmar</span></div></section>
+    <section class="trust-strip" aria-label="Ventajas de compra"><div class="trust-item"><strong> Envíos</strong><span>Consulta cobertura y tiempos</span></div><div class="trust-item"><strong> WhatsApp</strong><span>Atención directa y rápida</span></div><div class="trust-item"><strong> Pago sencillo</strong><span>Transferencia o contra entrega</span></div><div class="trust-item"><strong> Compra clara</strong><span>Información antes de confirmar</span></div></section>
     <section class="products-section" id="productos">
         <div class="container">
             <div class="section-header">
@@ -1381,11 +1381,10 @@
             <div class="controls">
                 <div class="filters">
                     <button class="filter-btn active" data-category="todos">Todos</button>
-                    <button class="filter-btn" data-category="joyeria">Joyeria</button>
-                    <button class="filter-btn" data-category="pasteleria">Pasteleria</button>
-                    <button class="filter-btn" data-category="belleza">Belleza</button>
-                    <button class="filter-btn" data-category="varios">Varios</button>
-                    <button class="filter-btn" data-category="moda">Moda</button>
+                    <button class="filter-btn" data-category="dtd">DTD a 10</button>
+					<button class="filter-btn" data-category="joyeria">Joyeria</button>
+					<button class="filter-btn" data-category="varios">Varios</button>
+                    <button class="filter-btn" data-category="pasteleria">Pasteleria</button>                  
                 </div>
                 
                 <div class="toolbar-extra"><span class="results-count" id="resultsCount"></span><select id="sortSelect" class="sort-select" aria-label="Ordenar productos"><option value="relevancia">Ordenar</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="nombre">Nombre A-Z</option></select></div><div class="view-controls"><button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
@@ -1413,7 +1412,7 @@
         </div>
     </section>
 
-    <section class="benefits"><div class="container"><p class="section-kicker">Una compra más sencilla</p><h2 class="section-title" style="margin-bottom:22px">Pensado para ti</h2><div class="benefit-grid"><div class="benefit-card"><strong>🛒 Carrito persistente</strong><p>Tus productos y favoritos se guardan en este dispositivo.</p></div><div class="benefit-card"><strong>📲 Pedido por WhatsApp</strong><p>El pedido se prepara automáticamente con productos, cantidades, total y número.</p></div><div class="benefit-card"><strong>🔔 Promociones</strong><p>Suscríbete voluntariamente para recibir novedades y ofertas.</p></div></div></div></section>
+    <section class="benefits"><div class="container"><p class="section-kicker">Una compra más sencilla</p><h2 class="section-title" style="margin-bottom:22px">Pensado para ti</h2><div class="benefit-grid"><div class="benefit-card"><strong> Carrito persistente</strong><p>Tus productos y favoritos se guardan en este dispositivo.</p></div><div class="benefit-card"><strong> Pedido por WhatsApp</strong><p>El pedido se prepara automáticamente con productos, cantidades, total y número.</p></div><div class="benefit-card"><strong> Promociones</strong><p>Suscríbete voluntariamente para recibir novedades y ofertas.</p></div></div></div></section>
 <section class="container" id="newsletter" aria-label="Newsletter"><div class="newsletter-box"><div><p class="section-kicker" style="text-align:left">Promociones</p><h2 style="font-family:'Playfair Display',serif;color:var(--color-primary);margin-bottom:8px">Recibe ofertas antes que nadie</h2><p style="color:var(--color-gray);font-size:.9rem">Déjanos tu teléfono y te avisamos por WhatsApp cuando haya descuentos o productos nuevos.</p></div><form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm"><input type="hidden" name="form-name" value="newsletter"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nueva suscripción — El Closet del Gato"><div class="newsletter-row"><input type="text" name="name" placeholder="Tu nombre (opcional)" autocomplete="name"><input type="tel" name="phone" placeholder="Tu número de teléfono" autocomplete="tel" required></div><label class="consent"><input type="checkbox" name="consent" value="yes" required> Acepto recibir promociones y novedades por WhatsApp. Puedo cancelar cuando quiera.</label><button class="btn-primary" type="submit">Quiero recibir ofertas</button><div class="form-success" id="newsletterSuccess">¡Listo! Tu suscripción fue enviada correctamente.</div></form></div></section>
 <section class="contact-section" id="contacto">
         <div class="container">
@@ -1653,10 +1652,148 @@
         // ========================================
         const productos = [
 			// ═══════════════════════════════════════
-            // 💍 JOYERÍA
+            //  DTD A 10
+            // ═══════════════════════════════════════
+			{
+                id: 1,                                
+                nombre: "Peine y accesorios",
+                descripcion: "Peine y accesorios para peinado, variedad de colores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g1.jpg"
+            },
+			{
+                id: 2,                                
+                nombre: "Broche estrella",
+                descripcion: "Broche para cabello en variedad de colores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g2.jpg"
+            },
+			{
+                id: 3,                                
+                nombre: "Mascarillas",
+                descripcion: "Mascarillas para la reparacion de piel, coo, petalos de rosa, kiwi, pepino y aloe",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g3.jpg"
+            },
+			{
+                id: 4,                                
+                nombre: "Monedero Hello Kitty",
+                descripcion: "Monedero con figuras de hello Kitty varios diseños",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g9.jpg"
+            },
+			{
+                id: 5,                                
+                nombre: "Banditas de goma",
+                descripcion: "Banditas de goma de colores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g14.jpg"
+            },
+			{
+                id: 6,                                
+                nombre: "Cepillo dental",
+                descripcion: "Cepillo dental infantil variedad de colores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g15.jpg"
+            },
+			{
+                id: 7,                                
+                nombre: "Espejo con peine",
+                descripcion: "Espejo con peine figura de hello Kitty variedad de colores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g21.jpg"
+            },
+			{
+                id: 8,                                
+                nombre: "Pasadores",
+                descripcion: "Pasadores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g22.jpg"
+            },
+			{
+                id: 9,                                
+                nombre: "Perfilador",
+                descripcion: "Blister con 3 perfiladores de cejas",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g23.jpg"
+            },
+			{
+                id: 10,                                
+                nombre: "Bandas",
+                descripcion: "Bandas para cabello, variedad de colores",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g24.jpg"
+            },
+			{
+                id: 11,                                
+                nombre: "Enchinador de cejas",
+                descripcion: "Enchinador de cejas",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g25.jpg"
+            },
+			{
+                id: 12,                                
+                nombre: "Glow Getter",
+                descripcion: "Glow getter hidratante",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g26.jpg"
+            },
+			{
+                id: 13,                                
+                nombre: "Tines",
+                descripcion: "Tines variedad de diseños",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g30.jpg"
+            },
+			{
+                id: 14,                                
+                nombre: "Sobres Pokemon",
+                descripcion: "Estampas coleccionabre, brillan con la luz",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g28.jpg"
+            },
+			{
+                id: 15,                                
+                nombre: "Calendario 2027 3D",
+                descripcion: "Calendario 3D variedad de imagenes",
+                destacado: true,
+                precio: 10,
+                categoria: "dtd",
+                imagen: "images/g27.jpg"
+            },
+			// ═══════════════════════════════════════
+            //  JOYERÍA
             // ═══════════════════════════════════════
             {
-                id: 1,                                
+                id: 16,                                
                 nombre: "Aretes de plata",
                 descripcion: "Aretess de plata",
                 destacado: true,
@@ -1665,7 +1802,7 @@
                 imagen: "images/c1.jpg"
             },
 			{
-                id: 2,                                
+                id: 17,                                
                 nombre: "Arracadas de plata",
                 descripcion: "Arracadas de plata",
                 destacado: true,
@@ -1674,7 +1811,7 @@
                 imagen: "images/c2.jpg"
             },
 			{
-                id: 3,                                
+                id: 18,                                
                 nombre: "Pulsera de plata",
                 descripcion: "Pulsera de bisuteria fina",
                 destacado: true,
@@ -1683,7 +1820,7 @@
                 imagen: "images/c3.jpg"
             },
 			{
-                id: 4,                                
+                id: 19,                                
                 nombre: "Pulsera de plata",
                 descripcion: "Pulsera de bisuteria fina color verde",
                 destacado: true,
@@ -1692,7 +1829,7 @@
                 imagen: "images/c4.jpg"
             },
 			{
-                id: 5,                                
+                id: 20,                                
                 nombre: "Pulsera de plata",
                 descripcion: "Pulsera de bisuteria fina color rojo",
                 destacado: true,
@@ -1701,7 +1838,7 @@
                 imagen: "images/c5.jpg"
             },
 			{
-                id: 6,                                
+                id: 21,                                
                 nombre: "Esclava de Acero 141",
                 descripcion: "Esclava de Acero-141",
                 destacado: true,
@@ -1710,7 +1847,7 @@
                 imagen: "images/c6.jpg"
             },
 			{
-                id: 7,                                
+                id: 22,                                
                 nombre: "Esclava de Acero 141",
                 descripcion: "Esclava de Acero-141",
                 destacado: true,
@@ -1719,7 +1856,7 @@
                 imagen: "images/c7.jpg"
             },
 			{
-                id: 8,                                
+                id: 23,                                
                 nombre: "Pulsera con baño de plata",
                 descripcion: "Pulsera con pedreria",
                 destacado: true,
@@ -1728,7 +1865,7 @@
                 imagen: "images/c8.jpg"
             },
 			{
-                id: 9,                                
+                id: 24,                                
                 nombre: "Cadena de plata 925",
                 descripcion: "Cadena de plata",
                 destacado: true,
@@ -1737,7 +1874,7 @@
                 imagen: "images/c9.jpg"
             },
 			{
-                id: 10,                                
+                id: 25,                                
                 nombre: "Dije de plata 925",
                 descripcion: "Dije de corazon de plata 925",
                 destacado: true,
@@ -1746,10 +1883,10 @@
                 imagen: "images/c10.jpg"
             },
 			// ═══════════════════════════════════════
-            // 🛍️ VARIOS
+            // ️ VARIOS
             // ═══════════════════════════════════════
 			{
-                id: 11,
+                id: 26,
                 nombre: "Tatuajes temporales",
                 descripcion: "kit de tatuajes temporales",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1759,7 +1896,7 @@
                 imagen: "images/ab1.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 12,
+                id: 27,
                 nombre: "Banner Display",
                 descripcion: "Fibra estructura 80X1.80cm con lona",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1769,7 +1906,7 @@
                 imagen: "images/ab2.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 13,
+                id: 28,
                 nombre: "Caballete publicitario",
                 descripcion: "Plegable, doble cara 90X60cm con lona ambos lados",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1779,7 +1916,7 @@
                 imagen: "images/ab2.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 14,
+                id: 29,
                 nombre: "Etiquetas, Flayers, Lonas",
                 descripcion: "Etiquetas $190 X 150pz, Flayers $690, Lonas 1X1 $150",
                 precio: 390,
@@ -1788,7 +1925,7 @@
                 imagen: "images/ab3.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 15,
+                id: 30,
                 nombre: "Bolsa Ecologica",
                 descripcion: "Tela de manta 30X30cm 100% algodon, color Blanco y Crudo, Tecnica DTF",
                 precio: 390,
@@ -1797,7 +1934,7 @@
                 imagen: "images/ab4.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 16,
+                id: 31,
                 nombre: "Gorras",
                 descripcion: "Bordado $90, DTF $80",
                 precio: 90,
@@ -1806,7 +1943,7 @@
                 imagen: "images/ab5.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 17,
+                id: 32,
                 nombre: "Vaso Clitter",
                 descripcion: "Colores disponibles Negro, Azul, Amarillo y Transparente 20oz Impresion UV logo, MAYOREO $25",
                 precio: 30,
@@ -1815,7 +1952,7 @@
                 imagen: "images/ab6.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 18,
+                id: 33,
                 nombre: "Vaso de Cristal",
                 descripcion: "Color saturación sin limite, MAYOREO $69",
                 precio: 90,
@@ -1824,7 +1961,7 @@
                 imagen: "images/ab7.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 19,
+                id: 34,
                 nombre: "Destapador",
                 descripcion: "Destapador con logo MAYOREO $12",
                 precio: 12,
@@ -1833,7 +1970,7 @@
                 imagen: "images/ab7.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 20,
+                id: 35,
                 nombre: "Llaveros",
                 descripcion: "precio por mayoreo $18, Llavero Destapador con logo Mayoreo $9",
                 precio: 30,
@@ -1842,7 +1979,7 @@
                 imagen: "images/ab8.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 21,
+                id: 36,
                 nombre: "Llaveros",
                 descripcion: "Llaveros Precio de MAYOREO $13,",
                 precio: 17,
@@ -1851,7 +1988,7 @@
                 imagen: "images/ab9.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 22,
+                id: 37,
                 nombre: "Playeras",
                 descripcion: "Playera basica personalizada, 100% algodon, Tallas CH, M, G, XG, precio MAYOREO $190",
                 precio: 250,
@@ -1860,7 +1997,7 @@
                 imagen: "images/ab10.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 23,
+                id: 38,
                 nombre: "Taza de Ceramica",
                 descripcion: "Acabado Brillante o Mate, Color saturacion sin limite, MAYOREO $39",
                 precio: 70,
@@ -1869,7 +2006,7 @@
                 imagen: "images/ab11.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 24,
+                id: 39,
                 nombre: "Vaso de Plastico",
                 descripcion: "Acabado brillante o mate, color Blanco, medidas 6X16cm, impresion UV, mayoreo $16",
                 precio: 25,
@@ -1878,7 +2015,7 @@
                 imagen: "images/ab11.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 25,
+                id: 40,
                 nombre: "Calcomanias Olograficas",
                 descripcion: "Calcomanias olograficas para decorar tus libretas, hoja tamaño carta",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1888,7 +2025,7 @@
                 imagen: "images/ab12.jpg" // <--- Cambia por el nombre de imagen
             },
 			{
-                id: 26,
+                id: 41,
                 nombre: "Calcomanias",
                 descripcion: "Calcomanias para decorar tus libretas",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1900,10 +2037,10 @@
 			
 			
 			// ═══════════════════════════════════════
-            // 🎂 PASTELERÍA
+            //  PASTELERÍA
             // ═══════════════════════════════════════
             {
-                id: 27,
+                id: 42,
                 nombre: "Pastel de cumpleaños",
                 descripcion: "Pastel con perlas",
                 destacado: true, // <--- Así se marca un producto como DESTACADO
@@ -1914,7 +2051,7 @@
                 imagen: "images/p1.jpg" // <--- Cambia por el nombre de imagen
             },
             {
-                id: 28,
+                id: 43,
                 nombre: "Pastel decorado",
                 descripcion: "Pastel con naturaleza",
                 precio: 499,
@@ -1923,7 +2060,7 @@
                 imagen: "images/p2.jpg" // <--- Cambia por el nombre de tu imagen
             },
             {
-                id: 29,
+                id: 44,
                 nombre: "Pastel Among Us",
                 descripcion: "Pastel de figura",
                 precio: 399,
@@ -1933,7 +2070,7 @@
                 imagen: "images/p3.jpg"
             },
             {
-                id: 30,
+                id: 45,
                 nombre: "Pastel con naturaleza",
                 descripcion: "Pastem dorado con naturaleza",
                 precio: 599,
@@ -1942,7 +2079,7 @@
                 imagen: "images/p4.jpg"
             },
             {
-                id: 31,
+                id: 46,
                 nombre: "Pastel de bodas",
                 descripcion: "Pastel con decorados con naturaleza",
                 precio: 4799,
@@ -1950,7 +2087,7 @@
                 imagen: "images/p5.jpg"
             },
             {
-                id: 32,
+                id: 47,
                 nombre: "Pastel decorado",
                 descripcion: "Diseño de escenas de caricaturas",
                 precio: 399,
@@ -1958,7 +2095,7 @@
                 imagen: "images/p6.jpg"
             },
             {
-                id: 33,
+                id: 48,
                 nombre: "Pastel de Chocolate",
                 descripcion: "pastel de chocolates",
                 precio: 499,
@@ -1966,7 +2103,7 @@
                 imagen: "images/p7.jpg"
             },
             {
-                id: 34,
+                id: 49,
                 nombre: "Pastel de mascotas",
                 descripcion: "Pastel de foto de mascotas",
                 precio: 699,
@@ -1974,7 +2111,7 @@
                 imagen: "images/p8.jpg"
             },
             {
-                id: 35,
+                id: 50,
                 nombre: "Pastel de Frutas",
                 descripcion: "Pastel con frutas",
 				destacado: true,
@@ -1984,7 +2121,7 @@
                 imagen: "images/p9.jpg"
             },
             {
-                id: 36,
+                id: 51,
                 nombre: "Pastel de osos",
                 descripcion: "Pastel de dibujos animados",
                 precio: 299,
@@ -2006,7 +2143,8 @@
             moda: '👗 Moda',
             deportes: '⚽ Deportes',
             hogar: '🏠 Hogar',
-            tecnologia: '💻 Tecnología'
+            tecnologia: '💻 Tecnología',
+			dtd: '💻 DTD a 10'
         };
         function nombreCategoria(cat) {
             return nombresCategorias[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
@@ -2332,7 +2470,7 @@
         function aplicarCategoriaDesdeURL() {
             const params = new URLSearchParams(window.location.search);
             const categoria = params.get('categoria');
-            const categoriasValidas = ['todos', 'belleza', 'joyeria', 'varios', 'hogar', 'moda'];
+            const categoriasValidas = ['todos', 'dtd', 'joyeria', 'varios', 'pasteleria'];
             if (categoria && categoriasValidas.includes(categoria)) {
                 filtrarPorCategoria(categoria, { skipUrlUpdate: true });
                 document.getElementById('productos').scrollIntoView({ behavior: 'instant' in window ? 'instant' : 'auto' });
