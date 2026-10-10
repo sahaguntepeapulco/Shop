@@ -114,6 +114,26 @@
             gap: var(--spacing-lg);
         }
 
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: inherit;
+            text-decoration: none;
+            min-width: 0;
+        }
+
+        .brand-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-accent);
+            background: #f5ecdc;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+            flex-shrink: 0;
+        }
+
         .logo {
             display: flex;
             flex-direction: column;
@@ -400,16 +420,16 @@
             background: var(--color-light);
             padding: 12px 0;
             box-shadow: 0 4px 10px -6px rgba(0,0,0,0.15);
-            max-height: var(--controls-h, 400px);
-            overflow: hidden;
-            transition: max-height 0.28s ease, padding 0.28s ease, box-shadow 0.28s ease;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            will-change: transform;
         }
 
+        /* Se esconde SOLO deslizándose hacia arriba (por detrás del encabezado).
+           No cambia su altura, así el contenido nunca se mueve ni "rebota". */
         .controls.controls-hidden {
-            max-height: 0;
-            padding-top: 0;
-            padding-bottom: 0;
+            transform: translateY(calc(-100% - 4px));
             box-shadow: none;
+            pointer-events: none;
         }
 
         .filters {
@@ -1157,13 +1177,14 @@
             .header-content {
                 flex-wrap: wrap;
                 row-gap: var(--spacing-sm);
+                column-gap: 12px;
             }
             .hamburger-btn {
                 display: flex;
                 order: 2;
                 margin-left: auto;
             }
-            .logo {
+            .brand {
                 order: 1;
             }
             .header-actions {
@@ -1239,7 +1260,18 @@
 
         @media (max-width: 480px) {
             .logo h1 {
-                font-size: 1.5rem;
+                font-size: clamp(1.05rem, 5.4vw, 1.4rem);
+                letter-spacing: 1px;
+            }
+            .tagline {
+                letter-spacing: 2px;
+            }
+            .brand {
+                gap: 10px;
+            }
+            .brand-logo {
+                width: 54px;
+                height: 54px;
             }
             .hero {
                 padding: 80px var(--spacing-md);
@@ -1256,6 +1288,17 @@
             .cart-sidebar,
             .favorites-sidebar {
                 max-width: 100%;
+            }
+        }
+
+        /* Celulares muy pequeños (≤360px): logo y título un poco más compactos para que quepa el ☰ en la misma fila */
+        @media (max-width: 360px) {
+            .brand-logo {
+                width: 44px;
+                height: 44px;
+            }
+            .logo h1 {
+                font-size: 1rem;
             }
         }
 
@@ -1293,11 +1336,11 @@
 .category-divider{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin:32px 0 6px}.category-divider:first-child{margin-top:0}.category-divider h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--color-primary);white-space:nowrap;margin:0}.category-divider::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,var(--color-accent),transparent)}
 .toolbar-extra{display:flex;gap:8px;align-items:center}.sort-select{padding:9px 12px;border:2px solid var(--color-light);border-radius:8px;background:#fff;font-family:inherit}.results-count{font-size:.8rem;color:var(--color-gray)}
 .benefits{padding:28px 0;background:#fff}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.benefit-card{border:1px solid #eee3d8;border-radius:14px;padding:22px}.benefit-card strong{display:block;color:var(--color-primary);margin-bottom:4px}.benefit-card p{font-size:.85rem;color:var(--color-gray)}
-.newsletter-box{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:#fff;border:1px solid #eadfd2;border-radius:18px;padding:28px;margin:35px 0}.newsletter-form{display:flex;flex-direction:column;gap:12px}.newsletter-row{display:flex;gap:10px}.newsletter-row input{min-width:0;flex:1;padding:14px 16px;border:2px solid var(--color-light);border-radius:var(--radius-md);font-family:inherit;font-size:.95rem;background:var(--color-light);transition:var(--transition-base)}.newsletter-row input:focus{outline:none;border-color:var(--color-accent);background:#fff}.newsletter-row input::placeholder{color:var(--color-gray)}.newsletter-box .consent{display:flex;align-items:flex-start;gap:8px;font-size:.78rem;color:var(--color-gray);line-height:1.5;cursor:pointer}.newsletter-box .consent input{margin-top:3px;flex-shrink:0;cursor:pointer}.form-success{display:none;padding:12px;border-radius:8px;background:#e9f8f1;color:#126b4d;font-size:.85rem}.form-success.show{display:block}
+.newsletter-box{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:#fff;border:1px solid #eadfd2;border-radius:18px;padding:28px;margin:35px 0}.newsletter-form{display:flex;flex-direction:column;gap:12px}.newsletter-row{display:flex;gap:10px}.newsletter-row input{min-width:0;flex:1;padding:14px 16px;border:2px solid var(--color-light);border-radius:var(--radius-md);font-family:inherit;font-size:.95rem;background:var(--color-light);transition:var(--transition-base)}.newsletter-row input:focus{outline:none;border-color:var(--color-accent);background:#fff}.newsletter-row input::placeholder{color:var(--color-gray)}.newsletter-box .consent{display:flex;align-items:flex-start;gap:8px;font-size:.78rem;color:var(--color-gray);line-height:1.5;cursor:pointer}.newsletter-box .consent input{margin-top:3px;flex-shrink:0;cursor:pointer}.grupo-cta{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.grupo-cta .btn-primary{display:inline-block;text-decoration:none;text-align:center}.grupo-nota{font-size:.78rem;color:var(--color-gray);line-height:1.5}.form-success{display:none;padding:12px;border-radius:8px;background:#e9f8f1;color:#126b4d;font-size:.85rem}.form-success.show{display:block}
 .whatsapp-float{position:fixed;right:18px;bottom:18px;z-index:1400;background:#1f9d65;color:#fff;text-decoration:none;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(0,0,0,.22);font-size:25px}.share-row{display:flex;gap:8px;margin-top:12px}.share-btn{border:1px solid #ddd;background:#fff;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.78rem}.share-btn:hover{background:var(--color-light)}
 .modal-wide{max-width:760px}.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px}.product-detail img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;background:var(--color-light)}.product-detail h2{font-family:'Playfair Display',serif;color:var(--color-primary);font-size:2rem}.detail-price{font-size:1.7rem;font-weight:700;color:var(--color-primary);margin:12px 0}.detail-description{color:var(--color-gray);line-height:1.7}.detail-list{padding-left:18px;margin:16px 0;color:var(--color-gray)}
 .install-banner{display:none;position:fixed;left:14px;right:14px;bottom:86px;z-index:1350;background:#fff;border:1px solid #eadfd2;border-radius:14px;padding:14px;box-shadow:var(--shadow-xl);align-items:center;justify-content:space-between;gap:10px}.install-banner.show{display:flex}.install-banner p{font-size:.78rem}.install-banner button{border:0;border-radius:8px;padding:9px 12px;background:var(--color-primary);color:#fff}
-@media(max-width:768px){.trust-strip{grid-template-columns:repeat(2,1fr)}.benefit-grid,.newsletter-box,.product-detail{grid-template-columns:1fr}.newsletter-row{flex-direction:column}.toolbar-extra{width:100%;justify-content:space-between}.product-actions{flex-direction:column;align-items:stretch}.product-actions button{width:100%}.hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;max-width:330px}}
+@media(max-width:768px){.grupo-cta,.grupo-cta .btn-primary{width:100%;align-items:stretch}.trust-strip{grid-template-columns:repeat(2,1fr)}.benefit-grid,.newsletter-box,.product-detail{grid-template-columns:1fr}.newsletter-row{flex-direction:column}.toolbar-extra{width:100%;justify-content:space-between}.product-actions{flex-direction:column;align-items:stretch}.product-actions button{width:100%}.hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;max-width:330px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"El Closet del Gato","url":"https://elclosetdelgato.netlify.app/","description":"Tienda en línea con productos seleccionados y atención por WhatsApp","email":"contacto@elclosetdelgato.com","telephone":"+52 729 756 3604","currenciesAccepted":"MXN"}</script></head>
@@ -1307,10 +1350,13 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <h1>El Closet del Gato</h1>
-                    <span class="tagline">Premium Collection</span>
-                </div>
+                <a class="brand" href="#inicio" aria-label="El Closet del Gato - ir al inicio">
+                    <img class="brand-logo" src="/icons/icon-192.png" alt="Logo de El Closet del Gato" width="64" height="64">
+                    <div class="logo">
+                        <h1>El Closet del Gato</h1>
+                        <span class="tagline">Premium Collection</span>
+                    </div>
+                </a>
 
                 <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1323,7 +1369,6 @@
                 <nav class="nav" id="mainNav">
                     <a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a>
                     <a href="#productos" class="nav-link" data-section="productos">Productos</a>
-                    <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
                 </nav>
 
                 <div class="header-actions">
@@ -1371,13 +1416,14 @@
         <div class="hero-decoration"></div>
     </section>
 
-    <section class="trust-strip" aria-label="Ventajas de compra"><div class="trust-item"><strong> Envíos</strong><span>Consulta cobertura y tiempos</span></div><div class="trust-item"><strong> WhatsApp</strong><span>Atención directa y rápida</span></div><div class="trust-item"><strong> Pago sencillo</strong><span>Transferencia o contra entrega</span></div><div class="trust-item"><strong> Compra clara</strong><span>Información antes de confirmar</span></div></section>
+    <section class="trust-strip" aria-label="Ventajas de compra"><div class="trust-item"><strong>Envíos</strong><span>Consulta cobertura y tiempos</span></div><div class="trust-item"><strong>WhatsApp</strong><span>Atención directa y rápida</span></div><div class="trust-item"><strong>Pago sencillo</strong><span>Transferencia o contra entrega</span></div><div class="trust-item"><strong>Compra clara</strong><span>Información antes de confirmar</span></div></section>
     <section class="products-section" id="productos">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nuestros Productos</h2>
             </div>
 
+            <div id="controlsMarcador" style="height:0" aria-hidden="true"></div>
             <div class="controls">
                 <div class="filters">
                     <button class="filter-btn active" data-category="todos">Todos</button>
@@ -1412,85 +1458,8 @@
         </div>
     </section>
 
-    <section class="benefits"><div class="container"><p class="section-kicker">Una compra más sencilla</p><h2 class="section-title" style="margin-bottom:22px">Pensado para ti</h2><div class="benefit-grid"><div class="benefit-card"><strong> Carrito persistente</strong><p>Tus productos y favoritos se guardan en este dispositivo.</p></div><div class="benefit-card"><strong> Pedido por WhatsApp</strong><p>El pedido se prepara automáticamente con productos, cantidades, total y número.</p></div><div class="benefit-card"><strong> Promociones</strong><p>Suscríbete voluntariamente para recibir novedades y ofertas.</p></div></div></div></section>
-<section class="container" id="newsletter" aria-label="Newsletter"><div class="newsletter-box"><div><p class="section-kicker" style="text-align:left">Promociones</p><h2 style="font-family:'Playfair Display',serif;color:var(--color-primary);margin-bottom:8px">Recibe ofertas antes que nadie</h2><p style="color:var(--color-gray);font-size:.9rem">Déjanos tu teléfono y te avisamos por WhatsApp cuando haya descuentos o productos nuevos.</p></div><form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm"><input type="hidden" name="form-name" value="newsletter"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nueva suscripción — El Closet del Gato"><div class="newsletter-row"><input type="text" name="name" placeholder="Tu nombre (opcional)" autocomplete="name"><input type="tel" name="phone" placeholder="Tu número de teléfono" autocomplete="tel" required></div><label class="consent"><input type="checkbox" name="consent" value="yes" required> Acepto recibir promociones y novedades por WhatsApp. Puedo cancelar cuando quiera.</label><button class="btn-primary" type="submit">Quiero recibir ofertas</button><div class="form-success" id="newsletterSuccess">¡Listo! Tu suscripción fue enviada correctamente.</div></form></div></section>
-<section class="contact-section" id="contacto">
-        <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <div>
-                            <h3>Dirección</h3>
-                            <p>Ciudad Sahagún, Hidalgo, México</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <div>
-                            <h3>Teléfono</h3>
-                            <p>+52 (729) 756-3604</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <div>
-                            <h3>Email</h3>
-                            <p>contacto@elclosetdelgato.com</p>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="#" class="social-link" title="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" title="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" title="Twitter">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="contact"><input type="hidden" name="bot-field"><input type="hidden" name="subject" data-remove-prefix value="Nuevo mensaje de contacto — El Closet del Gato">
-                    <div class="form-group">
-                        <input type="text" id="nombre" name="name" placeholder="Nombre completo" autocomplete="name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="telefonoContacto" name="phone" placeholder="Número de teléfono" autocomplete="tel" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Correo electrónico (opcional)" autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="mensaje" name="message" rows="5" placeholder="Mensaje" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    <section class="benefits"><div class="container"><p class="section-kicker">Una compra más sencilla</p><h2 class="section-title" style="margin-bottom:22px">Pensado para ti</h2><div class="benefit-grid"><div class="benefit-card"><strong>Carrito persistente</strong><p>Tus productos y favoritos se guardan en este dispositivo.</p></div><div class="benefit-card"><strong>Pedido por WhatsApp</strong><p>El pedido se prepara automáticamente con productos, cantidades, total y número.</p></div><div class="benefit-card"><strong>Promociones</strong><p>Suscríbete voluntariamente para recibir novedades y ofertas.</p></div></div></div></section>
+<section class="container" id="newsletter" aria-label="Promociones"><div class="newsletter-box"><div><p class="section-kicker" style="text-align:left">Promociones</p><h2 style="font-family:'Playfair Display',serif;color:var(--color-primary);margin-bottom:8px">Recibe ofertas antes que nadie</h2><p style="color:var(--color-gray);font-size:.9rem">Únete a nuestro grupo de WhatsApp y entérate primero de descuentos y productos nuevos.</p></div><div class="grupo-cta"><a class="btn-primary" href="https://chat.whatsapp.com/Jepa3jFzx8L6WI6A9XYMLw" target="_blank" rel="noopener">Quiero recibir ofertas</a><p class="grupo-nota">Se abrirá WhatsApp para que te unas al grupo. Puedes salir cuando quieras.</p></div></div></section>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1504,7 +1473,6 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#productos">Productos</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
                         <li><a href="#">Términos y Condiciones</a></li>
                     </ul>
                 </div>
@@ -1522,7 +1490,7 @@
                 <div class="footer-section">
                     <h4>Newsletter</h4>
                     <p>Suscríbete para recibir ofertas exclusivas</p>
-                    <a class="btn-primary" href="#newsletter" style="display:inline-block;text-decoration:none;margin-top:8px">Suscribirme a promociones</a>
+                    <a class="btn-primary" href="https://chat.whatsapp.com/Jepa3jFzx8L6WI6A9XYMLw" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;margin-top:8px">Suscribirme a promociones</a>
                 </div>
             </div>
             
@@ -1597,14 +1565,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Municipio *</label>
+                    <label>Ciudad *</label>
                     <select id="checkoutCity" required>
-                        <option value="">Selecciona un municipio</option>
-                        <option value="apan">Apan</option>
-                        <option value="sahagún">Sahagún</option>
-						<option value="tlanalapa">Tlanalapa</option>
-						<option value="zapata">E.Zapata</option>
-						<option value="tepeapulco">Tepeapulco</option>
+                        <option value="">Selecciona una ciudad</option>
+                        <option value="Apan">Apan</option>
+                        <option value="Sahagún">Sahagún</option>
                     </select>
                 </div>
 
@@ -1647,7 +1612,7 @@
         // Llave pública VAPID para notificaciones push (esta SÍ va en el código, es pública a propósito)
         const VAPID_PUBLIC_KEY = 'BJ-JArjXXzITME9rMXTYj-wlD5Qg38xFjxipjhXOgmqZXJDmBMflOY_NAYT-ojZNXKq8-S1QKJnjvKAxbK9cZSM';
 
-        // ========================================
+         // ========================================
         // DATOS DE PRODUCTOS (CON IMÁGENES LOCALES)
         // ========================================
         const productos = [
@@ -2143,8 +2108,7 @@
             moda: '👗 Moda',
             deportes: '⚽ Deportes',
             hogar: '🏠 Hogar',
-            tecnologia: '💻 Tecnología',
-			dtd: '💻 DTD a 10'
+            tecnologia: '💻 Tecnología'
         };
         function nombreCategoria(cat) {
             return nombresCategorias[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
@@ -2174,7 +2138,6 @@
         const closeFavorites = document.getElementById('closeFavorites');
         const favoritesItems = document.getElementById('favoritesItems');
         const favoritesBadge = document.getElementById('favoritesBadge');
-        const contactForm = document.getElementById('contactForm');
 
         // Mide la altura real del encabezado (cambia entre celular/escritorio y si el menú
         // hamburguesa hace que ocupe 1 o 2 filas) para que la barra de categorías se pegue
@@ -2186,13 +2149,6 @@
             }
         }
 
-        function actualizarAlturaControls() {
-            const controls = document.querySelector('.controls');
-            if (controls && !controls.classList.contains('controls-hidden')) {
-                document.documentElement.style.setProperty('--controls-h', controls.scrollHeight + 'px');
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             renderizarProductos();
             actualizarCarrito();
@@ -2201,44 +2157,53 @@
             actualizarBadges();
             aplicarCategoriaDesdeURL();
             actualizarAlturaHeader();
-            actualizarAlturaControls();
         });
 
         window.addEventListener('resize', actualizarAlturaHeader);
         window.addEventListener('orientationchange', actualizarAlturaHeader);
-        window.addEventListener('resize', actualizarAlturaControls);
-        window.addEventListener('orientationchange', actualizarAlturaControls);
 
         // ========================================
         // ESCONDER/MOSTRAR LA BARRA DE CATEGORÍAS SEGÚN LA DIRECCIÓN DEL SCROLL
         // Al bajar (ver más productos) se esconde para dar más espacio.
         // Al subir un poco, reaparece de inmediato.
+        // Importante: solo se DESLIZA (transform); nunca cambia de altura, por eso no vibra.
         // ========================================
         (function () {
             let ultimoScrollY = window.scrollY;
-            const UMBRAL = 6; // píxeles mínimos de movimiento para reaccionar (evita "parpadeos")
+            let acumulado = 0;      // movimiento acumulado en una misma dirección
+            let pendiente = false;
+            const UMBRAL = 12;      // px de movimiento sostenido para reaccionar
 
-            window.addEventListener('scroll', () => {
+            function revisar() {
+                pendiente = false;
                 const controls = document.querySelector('.controls');
-                if (!controls) return;
+                const marcador = document.getElementById('controlsMarcador');
+                if (!controls || !marcador) return;
 
                 const header = document.querySelector('.header');
                 const headerH = header ? header.offsetHeight : 0;
-                const actualScrollY = window.scrollY;
-                const diferencia = actualScrollY - ultimoScrollY;
+                const y = Math.max(0, window.scrollY);
+                const dif = y - ultimoScrollY;
+                ultimoScrollY = y;
 
-                if (actualScrollY <= headerH) {
-                    // Muy arriba de la página: siempre visible
+                // Mientras la barra sigue en su lugar natural (aún no se "pega" bajo el encabezado): siempre visible
+                const sePego = marcador.getBoundingClientRect().top <= headerH + 1;
+                if (!sePego) {
                     controls.classList.remove('controls-hidden');
-                } else if (diferencia > UMBRAL) {
-                    // Deslizando hacia abajo -> esconder
-                    controls.classList.add('controls-hidden');
-                } else if (diferencia < -UMBRAL) {
-                    // Deslizando hacia arriba -> mostrar
-                    controls.classList.remove('controls-hidden');
+                    acumulado = 0;
+                    return;
                 }
 
-                ultimoScrollY = actualScrollY;
+                // Si cambia la dirección, reinicia el acumulado
+                if ((dif > 0 && acumulado < 0) || (dif < 0 && acumulado > 0)) acumulado = 0;
+                acumulado += dif;
+
+                if (acumulado > UMBRAL) controls.classList.add('controls-hidden');          // bajando -> esconder
+                else if (acumulado < -UMBRAL) controls.classList.remove('controls-hidden'); // subiendo -> mostrar
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!pendiente) { pendiente = true; requestAnimationFrame(revisar); }
             }, { passive: true });
         })();
 
@@ -2568,37 +2533,6 @@
 
         async function enviarPedidoWhatsApp(e){e.preventDefault();if(!carrito.length){mostrarToast('El carrito está vacío','error');return;}const nombre=document.getElementById('checkoutName').value.trim(),telefono=document.getElementById('checkoutPhone').value.trim(),direccion=document.getElementById('checkoutAddress').value.trim(),ciudad=document.getElementById('checkoutCity').value,metodoPago=document.querySelector('input[name="payment"]:checked').value,total=carrito.reduce((s,i)=>s+i.precio*i.cantidad,0);const orderId='GATO-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();const lista=carrito.map(i=>`• ${i.nombre} — ${i.cantidad} x $${i.precio.toLocaleString('es-MX')} = $${(i.precio*i.cantidad).toLocaleString('es-MX')}`).join('\n');const mensaje=`🛍️ *PEDIDO ${orderId} — ${STORE_NAME}*\n\n👤 *Cliente:* ${nombre}\n📱 *Teléfono:* ${telefono}\n📍 *Dirección:* ${direccion}, ${ciudad}\n💳 *Pago:* ${metodoPago}\n\n📦 *PRODUCTOS:*\n${lista}\n\n💰 *TOTAL: $${total.toLocaleString('es-MX')}*\n\n¿Me confirman disponibilidad y envío?`;try{const fd=new URLSearchParams();fd.append('form-name','orders');fd.append('order_id',orderId);fd.append('name',nombre);fd.append('email',document.getElementById('checkoutEmail')?.value||'');fd.append('phone',telefono);fd.append('city',ciudad);fd.append('payment',metodoPago);fd.append('total',String(total));fd.append('items',lista);await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,'_blank','noopener');localStorage.setItem('lastOrder',JSON.stringify({orderId,nombre,total,createdAt:new Date().toISOString()}));mostrarToast(`Pedido ${orderId} preparado`,'success');setTimeout(()=>{toggleModal(checkoutModal);carrito=[];actualizarCarrito();e.target.reset()},700);}
 
-        async function enviarContacto(e) {
-            e.preventDefault();
-
-            const nombre = document.getElementById('nombre').value.trim();
-            const telefono = document.getElementById('telefonoContacto').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const mensaje = document.getElementById('mensaje').value.trim();
-
-            if (!nombre || !telefono || !mensaje) {
-                mostrarToast('Completa nombre, teléfono y mensaje', 'error');
-                return;
-            }
-
-            // Respaldo en Netlify Forms (aparece en tu panel de Netlify)
-            try {
-                const fd = new URLSearchParams(new FormData(e.target));
-                await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: fd.toString() });
-            } catch (err) { console.warn(err); }
-
-            // Envío directo a tu WhatsApp
-            const whatsMsg = `📩 *MENSAJE DE CONTACTO — ${STORE_NAME}*\n\n` +
-                              `👤 *Nombre:* ${nombre}\n` +
-                              `📱 *Teléfono:* ${telefono}\n` +
-                              (email ? `📧 *Correo:* ${email}\n` : '') +
-                              `\n💬 *Mensaje:*\n${mensaje}`;
-
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsMsg)}`, '_blank', 'noopener');
-
-            mostrarToast(`¡Gracias ${nombre}! Te contactaremos pronto`, 'success');
-            e.target.reset();
-        }
 
         function inicializarNavegacion() {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -2667,9 +2601,8 @@
             
             checkoutBtn.addEventListener('click', procesarCheckout);
             closeCheckout.addEventListener('click', () => toggleModal(checkoutModal));
-            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);const sortSelect=document.getElementById('sortSelect');sortSelect.addEventListener('change',e=>{sortActual=e.target.value;renderizarProductos()});const newsletterForm=document.getElementById('newsletterForm');newsletterForm.addEventListener('submit',async e=>{e.preventDefault();const nombreSub=newsletterForm.querySelector('[name="name"]').value.trim();const telSub=newsletterForm.querySelector('[name="phone"]').value.trim();try{const fd=new URLSearchParams(new FormData(newsletterForm));await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}const msgSub=`📬 *NUEVA SUSCRIPCIÓN A PROMOCIONES — ${STORE_NAME}*\n\n`+(nombreSub?`👤 *Nombre:* ${nombreSub}\n`:'')+`📱 *Teléfono:* ${telSub}\n\nQuiero recibir ofertas y novedades por WhatsApp.`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msgSub)}`,'_blank','noopener');newsletterForm.reset();document.getElementById('newsletterSuccess').classList.add('show');mostrarToast('¡Suscripción enviada!','success')});
+            checkoutForm.addEventListener('submit', enviarPedidoWhatsApp);const sortSelect=document.getElementById('sortSelect');sortSelect.addEventListener('change',e=>{sortActual=e.target.value;renderizarProductos()});
             
-            contactForm.addEventListener('submit', enviarContacto);
             
             inicializarNavegacion();
             
