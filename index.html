@@ -82,6 +82,15 @@
             box-shadow: var(--shadow-lg);
             animation: slideDown 0.5s ease;
             width: 100%;
+            transform: translateY(0);
+            transition: transform 0.28s ease;
+            will-change: transform;
+        }
+
+        /* Encabezado café: se oculta al bajar y solo vuelve al llegar arriba. */
+        .header.header-hidden {
+            transform: translateY(-105%);
+            pointer-events: none;
         }
 
         .hamburger-btn {
@@ -415,8 +424,8 @@
             gap: var(--spacing-md);
             flex-wrap: wrap;
             position: sticky;
-            top: var(--header-h, 84px);
-            z-index: 500;
+            top: 0;
+            z-index: 1001;
             background: var(--color-light);
             padding: 12px 0;
             box-shadow: 0 4px 10px -6px rgba(0,0,0,0.15);
@@ -430,6 +439,19 @@
             transform: translateY(calc(-100% - 4px));
             box-shadow: none;
             pointer-events: none;
+        }
+
+        /* Al desplazarse hacia arriba, deja visible únicamente la fila de categorías. */
+        .controls.categories-only .toolbar-extra,
+        .controls.categories-only .view-controls {
+            display: none !important;
+        }
+        .controls.categories-only {
+            justify-content: center;
+        }
+        .controls.categories-only .filters {
+            width: 100%;
+            justify-content: center;
         }
 
         .filters {
@@ -1644,7 +1666,14 @@
                 destacado: true,
                 precio: 10,
                 categoria: "dtd",
-                imagen: "images/g3.jpg"
+                imagen: "images/g3.jpg",
+                imagenes: [
+					"images/g3.jpg",
+					"images/g4.jpg",
+					"images/g5.jpg",
+					"images/g6.jpg",
+					"images/g7.jpg"
+				]
             },
 			{
                 id: 4,                                
@@ -1653,7 +1682,14 @@
                 destacado: true,
                 precio: 10,
                 categoria: "dtd",
-                imagen: "images/g9.jpg"
+                imagenes: [
+					"images/g9.jpg",
+					"images/g10.jpg",
+					"images/g11.jpg",
+					"images/g12.jpg",
+					"images/g13.jpg",
+					"images/g8.jpg"
+				]
             },
 			{
                 id: 5,                                
@@ -1680,8 +1716,15 @@
                 destacado: true,
                 precio: 10,
                 categoria: "dtd",
-                imagen: "images/g21.jpg"
-            },
+                imagenes: [
+					"images/g21.jpg",
+					"images/g20.jpg",
+					"images/g19.jpg",
+					"images/g18.jpg",
+					"images/g17.jpg",
+					"images/g16.jpg"
+				]
+			},
 			{
                 id: 8,                                
                 nombre: "Pasadores",
@@ -1734,7 +1777,15 @@
                 destacado: true,
                 precio: 10,
                 categoria: "dtd",
-                imagen: "images/g30.jpg"
+                imagenes: [
+					"images/g30.jpg",
+					"images/g31.jpg",
+					"images/g32.jpg",
+					"images/g33.jpg",
+					"images/g34.jpg",
+					"images/g35.jpg",
+					"images/g36.jpg"
+				]
             },
 			{
                 id: 14,                                
@@ -2099,7 +2150,34 @@
 
         const productosBase=productos.map((p,i)=>({...p,categoria:(p.categoria.toLowerCase()==='ropa'?'moda':p.categoria.toLowerCase()),stock:p.stock??5,destacado:p.destacado===true,oferta:p.oferta===true,nuevo:p.nuevo===true,precioAnterior:p.oferta===true&&p.precioAnterior?p.precioAnterior:null})); productos.length=0; productos.push(...productosBase); let sortActual='relevancia'; let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-        // Nombres bonitos para los títulos de categoría que se muestran en la página (vista "Todos")
+		// Objeto para llevar el control de la imagen actual de cada producto en el carrusel
+		const indicesCarrusel = {};
+
+		function cambiarImagenCarrusel(idProducto, direccion, event) {
+			if (event) event.stopPropagation(); // Evita que se abra el detalle del producto al hacer clic en la flecha
+			const producto = productos.find(p => p.id === idProducto);
+			if (!producto || !producto.imagenes) return;
+
+			if (indicesCarrusel[idProducto] === undefined) {
+				indicesCarrusel[idProducto] = 0;
+			}
+
+			indicesCarrusel[idProducto] += direccion;
+
+			// Ciclar entre las imágenes del arreglo
+			if (indicesCarrusel[idProducto] < 0) {
+				indicesCarrusel[idProducto] = producto.imagenes.length - 1;
+			} else if (indicesCarrusel[idProducto] >= producto.imagenes.length) {
+				indicesCarrusel[idProducto] = 0;
+			}
+
+			const imgEl = document.getElementById(`img-prod-${idProducto}`);
+			if (imgEl) {
+				imgEl.src = producto.imagenes[indicesCarrusel[idProducto]];
+			}
+		}
+		
+		// Nombres bonitos para los títulos de categoría que se muestran en la página (vista "Todos")
         const nombresCategorias = {
             pasteleria: '🎂 Pastelería',
             joyeria: '💍 Joyería',
@@ -2163,43 +2241,55 @@
         window.addEventListener('orientationchange', actualizarAlturaHeader);
 
         // ========================================
-        // ESCONDER/MOSTRAR LA BARRA DE CATEGORÍAS SEGÚN LA DIRECCIÓN DEL SCROLL
-        // Al bajar (ver más productos) se esconde para dar más espacio.
-        // Al subir un poco, reaparece de inmediato.
-        // Importante: solo se DESLIZA (transform); nunca cambia de altura, por eso no vibra.
+        // ENCABEZADO Y CATEGORÍAS SEGÚN LA DIRECCIÓN DEL SCROLL
+        // Al bajar: se ocultan el encabezado café y las categorías.
+        // Al subir: aparece solo la barra de categorías.
+        // Al volver al inicio: reaparece el encabezado completo.
         // ========================================
         (function () {
             let ultimoScrollY = window.scrollY;
-            let acumulado = 0;      // movimiento acumulado en una misma dirección
+            let acumulado = 0;
             let pendiente = false;
-            const UMBRAL = 12;      // px de movimiento sostenido para reaccionar
+            const UMBRAL = 12;
 
             function revisar() {
                 pendiente = false;
+                const header = document.querySelector('.header');
                 const controls = document.querySelector('.controls');
                 const marcador = document.getElementById('controlsMarcador');
-                if (!controls || !marcador) return;
+                if (!header || !controls || !marcador) return;
 
-                const header = document.querySelector('.header');
-                const headerH = header ? header.offsetHeight : 0;
                 const y = Math.max(0, window.scrollY);
                 const dif = y - ultimoScrollY;
                 ultimoScrollY = y;
 
-                // Mientras la barra sigue en su lugar natural (aún no se "pega" bajo el encabezado): siempre visible
-                const sePego = marcador.getBoundingClientRect().top <= headerH + 1;
-                if (!sePego) {
-                    controls.classList.remove('controls-hidden');
+                // En la parte superior siempre se muestra el encabezado completo.
+                if (y <= 50) {
+                    header.classList.remove('header-hidden');
+                    controls.classList.remove('controls-hidden', 'categories-only');
                     acumulado = 0;
                     return;
                 }
 
-                // Si cambia la dirección, reinicia el acumulado
+                // Detecta movimiento sostenido en una dirección.
                 if ((dif > 0 && acumulado < 0) || (dif < 0 && acumulado > 0)) acumulado = 0;
                 acumulado += dif;
 
-                if (acumulado > UMBRAL) controls.classList.add('controls-hidden');          // bajando -> esconder
-                else if (acumulado < -UMBRAL) controls.classList.remove('controls-hidden'); // subiendo -> mostrar
+                const seccionCategoriasEnZona = marcador.getBoundingClientRect().top <= 2;
+                if (acumulado > UMBRAL) {
+                    header.classList.add('header-hidden');
+                    if (seccionCategoriasEnZona) {
+                        controls.classList.add('controls-hidden');
+                        controls.classList.remove('categories-only');
+                    }
+                } else if (acumulado < -UMBRAL) {
+                    // Al subir, mantener escondido el encabezado café y mostrar solo categorías.
+                    header.classList.add('header-hidden');
+                    if (seccionCategoriasEnZona) {
+                        controls.classList.remove('controls-hidden');
+                        controls.classList.add('categories-only');
+                    }
+                }
             }
 
             window.addEventListener('scroll', () => {
@@ -2256,7 +2346,8 @@
                 return `${tituloCategoria}
                     <div class="product-card" data-product-id="${producto.id}">
                         <div class="product-image-container">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy" width="400" height="400" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 400%27%3E%3Crect width=%27400%27 height=%27400%27 fill=%27%23f8f6f3%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27sans-serif%27 font-size=%2718%27 fill=%27%232c1810%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${encodeURIComponent(producto.nombre)}%3C/text%3E%3C/svg%3E'">
+                            <img id="img-prod-${producto.id}" src="${(producto.imagenes && producto.imagenes.length > 0) ? producto.imagenes[0] : producto.imagen}" alt="${producto.nombre}" class="product-image" loading="lazy" width="400" height="400" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 400%27%3E%3Crect width=%27400%27 height=%27400%27 fill=%27%23f8f6f3%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27sans-serif%27 font-size=%2718%27 fill=%27%232c1810%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${encodeURIComponent(producto.nombre)}%3C/text%3E%3C/svg%3E'">
+                            ${producto.imagenes && producto.imagenes.length > 1 ? `<button type="button" aria-label="Imagen anterior" onclick="cambiarImagenCarrusel(${producto.id},-1,event)" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:11;border:0;border-radius:50%;width:34px;height:34px;background:rgba(255,255,255,.9);cursor:pointer;font-size:22px;line-height:1">‹</button><button type="button" aria-label="Imagen siguiente" onclick="cambiarImagenCarrusel(${producto.id},1,event)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:11;border:0;border-radius:50%;width:34px;height:34px;background:rgba(255,255,255,.9);cursor:pointer;font-size:22px;line-height:1">›</button>` : ''}
                             <button class="favorite-btn ${esFavorito ? 'active' : ''}" onclick="toggleFavorito(${producto.id})">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="${esFavorito ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
