@@ -1579,19 +1579,15 @@
                     <input type="text" id="checkoutName" required>
                 </div>
 
-                <div class="form-group"><label>Teléfono *</label><input type="tel" id="checkoutPhone" name="phone" required placeholder="Ej: 7791234567" autocomplete="tel"></div><div class="form-group"><label>Correo electrónico (opcional)</label><input type="email" id="checkoutEmail" name="email" placeholder="Tu correo" autocomplete="email"></div>
-                
                 <div class="form-group">
-                    <label>Dirección *</label>
-                    <input type="text" id="checkoutAddress" required placeholder="Calle, número, colonia">
-                </div>
-
-                <div class="form-group">
-                    <label>Ciudad *</label>
+                    <label>Ubicación *</label>
                     <select id="checkoutCity" required>
-                        <option value="">Selecciona una ciudad</option>
-                        <option value="Apan">Apan</option>
+                        <option value="">Selecciona tu ubicación</option>
+						<option value="Tlanalapa">Apan</option>
+                        <option value="Tepeapulco">Tepeapulco</option>
                         <option value="Sahagún">Sahagún</option>
+						<option value="Tlanalapa">Tlanalapa</option>
+                        <option value="E. Zapata">E. Zapata</option>
                     </select>
                 </div>
 
@@ -1754,8 +1750,8 @@
             },
 			{
                 id: 11,                                
-                nombre: "Enchinador de cejas",
-                descripcion: "Enchinador de cejas",
+                nombre: "Enchinador de pestañas",
+                descripcion: "Enchinador de pestañas",
                 destacado: true,
                 precio: 10,
                 categoria: "dtd",
@@ -2622,7 +2618,7 @@
             toggleModal(checkoutModal);
         }
 
-        async function enviarPedidoWhatsApp(e){e.preventDefault();if(!carrito.length){mostrarToast('El carrito está vacío','error');return;}const nombre=document.getElementById('checkoutName').value.trim(),telefono=document.getElementById('checkoutPhone').value.trim(),direccion=document.getElementById('checkoutAddress').value.trim(),ciudad=document.getElementById('checkoutCity').value,metodoPago=document.querySelector('input[name="payment"]:checked').value,total=carrito.reduce((s,i)=>s+i.precio*i.cantidad,0);const orderId='GATO-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();const lista=carrito.map(i=>`• ${i.nombre} — ${i.cantidad} x $${i.precio.toLocaleString('es-MX')} = $${(i.precio*i.cantidad).toLocaleString('es-MX')}`).join('\n');const mensaje=`🛍️ *PEDIDO ${orderId} — ${STORE_NAME}*\n\n👤 *Cliente:* ${nombre}\n📱 *Teléfono:* ${telefono}\n📍 *Dirección:* ${direccion}, ${ciudad}\n💳 *Pago:* ${metodoPago}\n\n📦 *PRODUCTOS:*\n${lista}\n\n💰 *TOTAL: $${total.toLocaleString('es-MX')}*\n\n¿Me confirman disponibilidad y envío?`;try{const fd=new URLSearchParams();fd.append('form-name','orders');fd.append('order_id',orderId);fd.append('name',nombre);fd.append('email',document.getElementById('checkoutEmail')?.value||'');fd.append('phone',telefono);fd.append('city',ciudad);fd.append('payment',metodoPago);fd.append('total',String(total));fd.append('items',lista);await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,'_blank','noopener');localStorage.setItem('lastOrder',JSON.stringify({orderId,nombre,total,createdAt:new Date().toISOString()}));mostrarToast(`Pedido ${orderId} preparado`,'success');setTimeout(()=>{toggleModal(checkoutModal);carrito=[];actualizarCarrito();e.target.reset()},700);}
+        async function enviarPedidoWhatsApp(e){e.preventDefault();if(!carrito.length){mostrarToast('El carrito está vacío','error');return;}const nombre=document.getElementById('checkoutName').value.trim(),ubicacion=document.getElementById('checkoutCity').value,metodoPago=document.querySelector('input[name="payment"]:checked').value,total=carrito.reduce((s,i)=>s+i.precio*i.cantidad,0);const orderId='GATO-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();const lista=carrito.map(i=>`• ${i.nombre} — ${i.cantidad} x $${i.precio.toLocaleString('es-MX')} = $${(i.precio*i.cantidad).toLocaleString('es-MX')}`).join('\n');const mensaje=`🛍️ *PEDIDO ${orderId} — ${STORE_NAME}*\n\n👤 *Cliente:* ${nombre}\n📍 *Ubicación:* ${ubicacion}\n💳 *Pago:* ${metodoPago}\n\n📦 *PRODUCTOS:*\n${lista}\n\n💰 *TOTAL: $${total.toLocaleString('es-MX')}*\n\n¿Me confirman disponibilidad y envío?`;try{const fd=new URLSearchParams();fd.append('form-name','orders');fd.append('order_id',orderId);fd.append('name',nombre);fd.append('city',ubicacion);fd.append('payment',metodoPago);fd.append('total',String(total));fd.append('items',lista);await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()})}catch(err){console.warn(err)}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,'_blank','noopener');localStorage.setItem('lastOrder',JSON.stringify({orderId,nombre,ubicacion,total,createdAt:new Date().toISOString()}));mostrarToast(`Pedido ${orderId} preparado`,'success');setTimeout(()=>{toggleModal(checkoutModal);carrito=[];actualizarCarrito();e.target.reset()},700);}
 
 
         function inicializarNavegacion() {
