@@ -1364,7 +1364,44 @@
 .install-banner{display:none;position:fixed;left:14px;right:14px;bottom:86px;z-index:1350;background:#fff;border:1px solid #eadfd2;border-radius:14px;padding:14px;box-shadow:var(--shadow-xl);align-items:center;justify-content:space-between;gap:10px}.install-banner.show{display:flex}.install-banner p{font-size:.78rem}.install-banner button{border:0;border-radius:8px;padding:9px 12px;background:var(--color-primary);color:#fff}
 @media(max-width:768px){.grupo-cta,.grupo-cta .btn-primary{width:100%;align-items:stretch}.trust-strip{grid-template-columns:repeat(2,1fr)}.benefit-grid,.newsletter-box,.product-detail{grid-template-columns:1fr}.newsletter-row{flex-direction:column}.toolbar-extra{width:100%;justify-content:space-between}.product-actions{flex-direction:column;align-items:stretch}.product-actions button{width:100%}.hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;max-width:330px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-</style>
+
+
+        /* Menú flotante de categorías: añadido de forma independiente al resto de la tienda. */
+        #botonCategoriasFlotante {
+            position: fixed; left: 18px; top: 50%; transform: translateY(-50%);
+            z-index: 1200; width: 54px; height: 54px; border: 0; border-radius: 50%;
+            background: var(--gradient-primary); color: #fff; box-shadow: var(--shadow-lg);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            font-size: 25px; transition: transform .2s ease, box-shadow .2s ease;
+        }
+        #botonCategoriasFlotante:hover { transform: translateY(-50%) scale(1.06); box-shadow: var(--shadow-xl); }
+        #menuCategoriasFlotante {
+            position: fixed; left: 82px; top: 50%; transform: translateY(-50%);
+            z-index: 1201; width: min(245px, calc(100vw - 100px)); max-height: 70vh; overflow-y: auto;
+            padding: 16px; border-radius: 14px; background: #fff; color: var(--color-primary);
+            box-shadow: 0 12px 36px rgba(0,0,0,.24); border: 1px solid rgba(139,111,71,.25);
+            display: none;
+        }
+        #menuCategoriasFlotante.abierto { display: block; animation: aparecerMenuCategorias .18s ease-out; }
+        #menuCategoriasFlotante h3 { font-family: 'Playfair Display', serif; font-size: 1.08rem; margin: 0 0 10px; padding-right: 25px; }
+        #menuCategoriasFlotante .cerrar-menu-categorias {
+            position: absolute; top: 9px; right: 10px; border: 0; background: transparent;
+            color: var(--color-primary); font-size: 23px; line-height: 1; cursor: pointer; padding: 3px 6px;
+        }
+        #menuCategoriasFlotante .opcion-categoria-flotante {
+            display: block; width: 100%; text-align: left; padding: 10px 11px; margin-top: 5px;
+            border: 0; border-radius: 8px; background: #f8f6f3; color: var(--color-primary);
+            font: inherit; font-size: .93rem; cursor: pointer; transition: background .2s ease, color .2s ease;
+        }
+        #menuCategoriasFlotante .opcion-categoria-flotante:hover,
+        #menuCategoriasFlotante .opcion-categoria-flotante.activa { background: var(--color-primary); color: #fff; }
+        @keyframes aparecerMenuCategorias { from { opacity: 0; transform: translate(-6px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+        @media (max-width: 480px) {
+            #botonCategoriasFlotante { left: 10px; width: 48px; height: 48px; font-size: 22px; }
+            #menuCategoriasFlotante { left: 66px; width: min(225px, calc(100vw - 78px)); padding: 13px; }
+        }
+
+    </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"El Closet del Gato","url":"https://elclosetdelgato.netlify.app/","description":"Tienda en línea con productos seleccionados y atención por WhatsApp","email":"contacto@elclosetdelgato.com","telephone":"+52 729 756 3604","currenciesAccepted":"MXN"}</script></head>
 <body>
     <div id="toast" class="toast"></div>
@@ -1452,7 +1489,8 @@
                     <button class="filter-btn" data-category="dtd">DTD a 10</button>
 					<button class="filter-btn" data-category="joyeria">Joyeria</button>
 					<button class="filter-btn" data-category="varios">Varios</button>
-                    <button class="filter-btn" data-category="pasteleria">Pasteleria</button>                  
+                    <button class="filter-btn" data-category="pasteleria">Pasteleria</button>
+					<button class="filter-btn" data-category="servicios">Servicios</button>	
                 </div>
                 
                 <div class="toolbar-extra"><span class="results-count" id="resultsCount"></span><select id="sortSelect" class="sort-select" aria-label="Ordenar productos"><option value="relevancia">Ordenar</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="nombre">Nombre A-Z</option></select></div><div class="view-controls"><button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
@@ -1583,10 +1621,8 @@
                     <label>Ubicación *</label>
                     <select id="checkoutCity" required>
                         <option value="">Selecciona tu ubicación</option>
-						<option value="Tlanalapa">Apan</option>
                         <option value="Tepeapulco">Tepeapulco</option>
-                        <option value="Sahagún">Sahagún</option>
-						<option value="Tlanalapa">Tlanalapa</option>
+                        <option value="Tlanalapa">Tlanalapa</option>
                         <option value="E. Zapata">E. Zapata</option>
                     </select>
                 </div>
@@ -2140,6 +2176,30 @@
                 categoria: "pasteleria",
                 imagen: "images/p10.jpg"
             },
+			{
+                id: 52,
+                nombre: "Soporte Técnico y Tecnologías de la Información",
+                descripcion: "Actualización de Software: Instalan parches, nuevas versiones y mejoras de sistemas operativos, y mejorar el rendimiento general y mejorar el rendimiento general. Recuperación de Datos y mas.",
+                precio: 299,
+                categoria: "servicios",
+                imagen: "images/s1.jpg"
+            },
+			{
+                id: 53,
+                nombre: "Alpha Training Club",
+                descripcion: "CrossFit Comunidad, técnica y alta intensidad. Entrenamientos constantemente variados, programados por coaches certificados. RESERVA TU CLASE GRATIS",
+                precio: 299,
+                categoria: "servicios",
+                imagen: "images/s2.jpg"
+            },
+			{
+                id: 54,
+                nombre: "Herrero",
+                descripcion: "Fabricamos e instalamos trabajos de herrería en general: Portones y zaguanes, Puertas, ventanas y protecciones, Barandales, escaleras y rejas, Cortinas metálicas y estructuras, Trabajos garantizados y materiales de primera calidad.,Cotizaciones sin compromiso. ",
+                precio: 0,
+                categoria: "servicios",
+                imagen: "images/s3.jpg"
+            },
 			
             // ... (aquí seguirían los demás productos de joyería) ...
         ];
@@ -2522,7 +2582,7 @@
         function aplicarCategoriaDesdeURL() {
             const params = new URLSearchParams(window.location.search);
             const categoria = params.get('categoria');
-            const categoriasValidas = ['todos', 'dtd', 'joyeria', 'varios', 'pasteleria'];
+            const categoriasValidas = ['todos', 'dtd', 'joyeria', 'varios', 'pasteleria','servicios'];
             if (categoria && categoriasValidas.includes(categoria)) {
                 filtrarPorCategoria(categoria, { skipUrlUpdate: true });
                 document.getElementById('productos').scrollIntoView({ behavior: 'instant' in window ? 'instant' : 'auto' });
@@ -2800,6 +2860,82 @@
                 header.style.boxShadow = 'var(--shadow-lg)';
             }
         });
+    
+
+        // Comportamiento independiente del menú flotante de categorías.
+        // Espera a que el navegador termine de crear el HTML del menú.
+        document.addEventListener('DOMContentLoaded', () => {
+            const boton = document.getElementById('botonCategoriasFlotante');
+            const menu = document.getElementById('menuCategoriasFlotante');
+            const cerrar = document.getElementById('cerrarMenuCategoriasFlotante');
+            if (!boton || !menu || !cerrar) return;
+
+            const listaCategorias = document.getElementById('listaCategoriasFlotante');
+            function generarCategoriasFlotantes() {
+                if (!listaCategorias) return;
+                // Los filtros visibles de "Nuestros Productos" son la fuente de categorías.
+                // Si se agrega una categoría en esa barra, aparecerá aquí automáticamente.
+                const filtros = Array.from(document.querySelectorAll('.filters .filter-btn[data-category]'));
+                const categorias = filtros.map(filtro => ({
+                    id: filtro.dataset.category,
+                    nombre: filtro.dataset.category === 'todos' ? 'Todos los productos' : filtro.textContent.trim()
+                }));
+                listaCategorias.innerHTML = '';
+                categorias.forEach(categoria => {
+                    const opcion = document.createElement('button');
+                    opcion.type = 'button';
+                    opcion.className = 'opcion-categoria-flotante';
+                    opcion.dataset.categoriaFlotante = categoria.id;
+                    opcion.textContent = categoria.nombre;
+                    if (categoria.id === (typeof categoriaActual !== 'undefined' ? categoriaActual : 'todos')) {
+                        opcion.classList.add('activa');
+                    }
+                    listaCategorias.appendChild(opcion);
+                });
+            }
+            function establecerMenu(abierto) {
+                menu.classList.toggle('abierto', abierto);
+                boton.setAttribute('aria-expanded', String(abierto));
+                menu.setAttribute('aria-hidden', String(!abierto));
+            }
+            generarCategoriasFlotantes();
+            boton.addEventListener('click', () => {
+                generarCategoriasFlotantes();
+                establecerMenu(!menu.classList.contains('abierto'));
+            });
+            cerrar.addEventListener('click', () => establecerMenu(false));
+            menu.addEventListener('click', event => {
+                const opcion = event.target.closest('[data-categoria-flotante]');
+                if (!opcion) return;
+                const categoria = opcion.dataset.categoriaFlotante;
+                if (typeof filtrarPorCategoria === 'function') filtrarPorCategoria(categoria);
+                menu.querySelectorAll('[data-categoria-flotante]').forEach(item => {
+                    item.classList.toggle('activa', item === opcion);
+                });
+                establecerMenu(false);
+                const productos = document.getElementById('productos');
+                if (productos) productos.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') establecerMenu(false);
+            });
+            document.addEventListener('click', event => {
+                if (menu.classList.contains('abierto') && !menu.contains(event.target) && !boton.contains(event.target)) {
+                    establecerMenu(false);
+                }
+            });
+        });
+
     </script>
+
+
+    <!-- Acceso flotante a las categorías de Nuestros Productos -->
+    <button id="botonCategoriasFlotante" type="button" aria-label="Abrir menú de categorías" aria-controls="menuCategoriasFlotante" aria-expanded="false" title="Categorías">🌐</button>
+    <nav id="menuCategoriasFlotante" aria-label="Categorías de nuestros productos" aria-hidden="true">
+        <button type="button" class="cerrar-menu-categorias" id="cerrarMenuCategoriasFlotante" aria-label="Cerrar menú">×</button>
+        <h3>Nuestras categorías</h3>
+        <div id="listaCategoriasFlotante"></div>
+    </nav>
+
 </body>
 </html>
